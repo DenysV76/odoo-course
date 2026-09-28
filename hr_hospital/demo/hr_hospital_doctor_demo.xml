@@ -1,0 +1,17 @@
+<odoo>
+
+    <record id="hr_hospital_doctor_demo_1" model="hr.hospital.doctor">
+        <field name="name">Іваненко Петро</field>
+    </record>
+
+    <record id="hr_hospital_doctor_demo_2" model="hr.hospital.doctor">
+        <field name="name">Петренко Олена</field>
+        <field name="observing_doctor_id" ref="hr_hospital_doctor_demo_1"/>
+    </record>
+
+    <record id="hr_hospital_doctor_demo_3" model="hr.hospital.doctor">
+        <field name="name">Сидоренко Соломія</field>
+        <field name="observing_doctor_id" ref="hr_hospital_doctor_demo_1"/>
+    </record>
+
+</odoo>
