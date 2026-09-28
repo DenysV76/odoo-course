@@ -1,0 +1,16 @@
+<odoo>
+
+    <record id="hr_hospital_patient_1" model="hr.hospital.patient">
+        <field name="name">Пацієнт 1</field>
+    </record>
+
+    <record id="hr_hospital_patient_2" model="hr.hospital.patient">
+        <field name="name">Пацієнт 2</field>
+    </record>
+
+    <record id="hr_hospital_patient_3" model="hr.hospital.patient">
+        <field name="name">Пацієнт 3</field>
+        <field name="description">Алергік</field>
+    </record>
+
+</odoo>

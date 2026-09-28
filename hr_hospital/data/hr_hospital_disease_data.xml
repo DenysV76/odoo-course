@@ -1,0 +1,15 @@
+<odoo>
+
+    <record id="hr_hospital_disease_flu" model="hr.hospital.disease">
+        <field name="name">Грип</field>
+    </record>
+
+    <record id="hr_hospital_disease_covid" model="hr.hospital.disease">
+        <field name="name">COVID 19</field>
+    </record>
+
+    <record id="hr_hospital_disease_allergy" model="hr.hospital.disease">
+        <field name="name">Алергія</field>
+    </record>
+
+</odoo>
