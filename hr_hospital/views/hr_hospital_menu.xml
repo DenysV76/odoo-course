@@ -1,0 +1,7 @@
+<odoo>
+
+    <menuitem id="hr_hospital_menu_root"
+              name="Лікарня"
+              sequence="300"/>
+
+</odoo>
