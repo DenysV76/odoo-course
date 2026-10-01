@@ -1,13 +1,13 @@
 import logging
 
-from odoo import models, fields
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
 
 class HrHospitalPatient(models.Model):
-    _name = 'hr.hospital.patient'
-    _description = 'Patient'
+    _name = "hr.hospital.patient"
+    _description = "Patient"
 
     name = fields.Char()
 
