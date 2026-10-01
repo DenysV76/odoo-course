@@ -1,13 +1,13 @@
 import logging
 
-from odoo import models, fields
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
 
 class HrHospitalVisit(models.Model):
-    _name = 'hr.hospital.visit'
-    _description = 'Visit'
+    _name = "hr.hospital.visit"
+    _description = "Visit"
 
     visit_date = fields.Datetime(
         string="Visit Date",
@@ -20,14 +20,14 @@ class HrHospitalVisit(models.Model):
     description = fields.Text()
 
     doctor_id = fields.Many2one(
-        comodel_name='hr.hospital.doctor',
+        comodel_name="hr.hospital.doctor",
         string="Doctor",
     )
     patient_id = fields.Many2one(
-        comodel_name='hr.hospital.patient',
+        comodel_name="hr.hospital.patient",
         string="Patient",
     )
     disease_id = fields.Many2one(
-        comodel_name='hr.hospital.disease',
+        comodel_name="hr.hospital.disease",
         string="Disease",
     )
