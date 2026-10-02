@@ -1,6 +1,6 @@
 import logging
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -28,5 +28,18 @@ class HospitalDoctorHistory(models.Model):
     change_date = fields.Date(string="Doctor Change Date")
     active = fields.Boolean(default=True)
 
-    # TODO(1.5): @api.onchange — попередження, якщо change_date < assign_date
+    @api.onchange("assign_date", "change_date")
+    def _onchange_assign_date(self):
+        if (
+            self.assign_date
+            and self.change_date
+            and self.assign_date > self.change_date
+        ):
+            return {
+                "warning": {
+                    "title": "Увага",
+                    "message": "Дата зміни лікаря не може бути раніше ніж дата призначення",
+                }
+            }
+
     # TODO(1.7): _compute_display_name + _rec_names_search

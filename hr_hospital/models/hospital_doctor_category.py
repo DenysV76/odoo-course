@@ -18,4 +18,7 @@ class HospitalDoctorCategory(models.Model):
         string="Doctors",
     )
 
-    # TODO(1.2): унікальність назви через models.Constraint
+    _name_uniq = models.Constraint(
+        "unique (name)",
+        "Назва кваліфікації вже існує!",
+    )
