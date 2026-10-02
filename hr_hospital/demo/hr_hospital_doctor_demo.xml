@@ -2,16 +2,19 @@
 
     <record id="hr_hospital_doctor_demo_1" model="hr.hospital.doctor">
         <field name="name">Іваненко Петро</field>
+        <field name="category_id" ref="doctor_category_highest"/>
     </record>
 
     <record id="hr_hospital_doctor_demo_2" model="hr.hospital.doctor">
         <field name="name">Петренко Олена</field>
         <field name="observing_doctor_id" ref="hr_hospital_doctor_demo_1"/>
+        <field name="category_id" ref="doctor_category_specialist"/>
     </record>
 
     <record id="hr_hospital_doctor_demo_3" model="hr.hospital.doctor">
         <field name="name">Сидоренко Соломія</field>
         <field name="observing_doctor_id" ref="hr_hospital_doctor_demo_1"/>
+        <field name="category_id" ref="doctor_category_intern"/>
     </record>
 
 </odoo>

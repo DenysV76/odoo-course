@@ -5,6 +5,7 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
+                <field name="category_id"/>
                 <field name="description"/>
                 <field name="observing_doctor_id"/>
             </list>
@@ -23,6 +24,7 @@
                             <field name="description"/>
                         </group>
                         <group>
+                            <field name="category_id"/>
                             <field name="observing_doctor_id"/>
                         </group>
                     </group>

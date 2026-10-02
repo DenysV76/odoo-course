@@ -18,3 +18,7 @@ class HrHospitalDoctor(models.Model):
         comodel_name="hr.hospital.doctor",
         string="Observing Doctor",
     )
+    category_id = fields.Many2one(
+        comodel_name="hospital.doctor.category",
+        string="Category",
+    )
