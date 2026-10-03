@@ -6,8 +6,11 @@
             <list>
                 <field name="name"/>
                 <field name="category_id"/>
-                <field name="description"/>
+                <field name="is_intern" optional="show"/>
+                <field name="mentor_id" invisible="not is_intern" optional="show"/>
                 <field name="observing_doctor_id"/>
+                <field name="user_id" optional="hide"/>
+                <field name="description" optional="hide"/>
             </list>
         </field>
     </record>
@@ -25,7 +28,18 @@
                         </group>
                         <group>
                             <field name="category_id"/>
+                            <field name="is_intern"/>
+                            <field name="mentor_id"
+                                   invisible="not is_intern"
+                                   domain="[('is_intern', '=', False), ('id', '!=', id)]"/>
                             <field name="observing_doctor_id"/>
+                            <field name="user_id"/>
+                        </group>
+                        <group string="Medical Info">
+                            <field name="gender"/>
+                            <field name="birth_date"/>
+                            <field name="age"/>
+                            <field name="blood_type"/>
                         </group>
                     </group>
                 </sheet>

@@ -9,10 +9,20 @@ class HrHospitalVisit(models.Model):
     _name = "hr.hospital.visit"
     _description = "Visit"
 
-    visit_date = fields.Datetime(
-        string="Visit Date",
+    state = fields.Selection(
+        selection=[
+            ("planned", "Planned"),
+            ("done", "Done"),
+            ("cancelled", "Cancelled"),
+        ],
+        default="planned",
+        required=True,
+    )
+    planned_date = fields.Datetime(
+        string="Planned Date",
         default=fields.Datetime.now,
     )
+    visit_date = fields.Datetime(string="Actual Visit Date")
 
     name = fields.Char()
 
@@ -31,3 +41,9 @@ class HrHospitalVisit(models.Model):
         comodel_name="hr.hospital.disease",
         string="Disease",
     )
+    summary = fields.Html()
+
+    # TODO(3.5.1): заборонити змінювати planned_date, visit_date, doctor_id
+    # у візиту зі state == "done" (перевизначити write)
+    # TODO(3.5.2): заборонити видаляти (unlink) і архівувати (active=False)
+    # візити зі state == "done"; не зламати uninstall — див. «Часті помилки» п. 4

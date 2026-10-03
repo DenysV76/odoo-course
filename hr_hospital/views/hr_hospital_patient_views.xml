@@ -5,7 +5,11 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
-                <field name="description"/>
+                <field name="personal_doctor_id"/>
+                <field name="age"/>
+                <field name="blood_type" optional="show"/>
+                <field name="insurance_number" optional="hide"/>
+                <field name="description" optional="hide"/>
             </list>
         </field>
     </record>
@@ -19,9 +23,28 @@
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="personal_doctor_id"/>
+                            <field name="insurance_number"/>
                             <field name="description"/>
                         </group>
+                        <group string="Medical Info">
+                            <field name="gender"/>
+                            <field name="birth_date"/>
+                            <field name="age"/>
+                            <field name="blood_type"/>
+                        </group>
                     </group>
+                    <notebook>
+                        <page string="Personal Doctor History" name="doctor_history">
+                            <field name="doctor_history_ids">
+                                <list editable="bottom">
+                                    <field name="doctor_id"/>
+                                    <field name="assign_date"/>
+                                    <field name="change_date"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

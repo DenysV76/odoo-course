@@ -5,10 +5,15 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
+                <field name="planned_date"/>
                 <field name="visit_date"/>
                 <field name="doctor_id"/>
                 <field name="patient_id"/>
                 <field name="disease_id"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'planned'"
+                       decoration-success="state == 'done'"
+                       decoration-muted="state == 'cancelled'"/>
             </list>
         </field>
     </record>
@@ -18,10 +23,14 @@
         <field name="model">hr.hospital.visit</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="planned_date"/>
                             <field name="visit_date"/>
                             <field name="description"/>
                         </group>
@@ -31,6 +40,11 @@
                             <field name="disease_id"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Summary" name="summary">
+                            <field name="summary"/>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
