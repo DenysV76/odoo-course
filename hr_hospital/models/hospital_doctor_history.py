@@ -42,4 +42,11 @@ class HospitalDoctorHistory(models.Model):
                 }
             }
 
-    # TODO(1.7): _compute_display_name + _rec_names_search
+    _rec_names_search = ["patient_id", "doctor_id"]
+
+    @api.depends(
+        "patient_id.name", "doctor_id.name", "doctor_id.category_id.name", "assign_date"
+    )
+    def _compute_display_name(self):
+        for record in self:
+            record.display_name = f"{record.patient_id.name} - {record.doctor_id.name} ({record.doctor_id.category_id.name}) {record.assign_date}"

@@ -36,11 +36,24 @@
         </field>
     </record>
 
+    <record id="hospital_doctor_history_view_search" model="ir.ui.view">
+        <field name="name">hospital.doctor.history.search</field>
+        <field name="model">hospital.doctor.history</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="display_name" string="Запис"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <filter name="inactive" string="Архівні" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
     <record id="hospital_doctor_history_action" model="ir.actions.act_window">
         <field name="name">Історія персональних лікарів</field>
         <field name="res_model">hospital.doctor.history</field>
         <field name="view_mode">list,form</field>
-        <field name="context">{'active_test': False}</field>
+        <field name="context">{}</field>
     </record>
 
     <menuitem id="hospital_doctor_history_menu"
