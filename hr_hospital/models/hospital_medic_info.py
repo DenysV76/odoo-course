@@ -1,6 +1,6 @@
 import logging
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -31,8 +31,17 @@ class HospitalMedicInfo(models.AbstractModel):
     birth_date = fields.Date()
     age = fields.Integer(compute="_compute_age")
 
-    # TODO(2.1): метод _compute_age з @api.depends — вік у повних роках
-    # від birth_date до сьогодні. Поки що заглушка, щоб модуль працював.
+    @api.depends("birth_date")
     def _compute_age(self):
         for record in self:
-            record.age = 0
+            if not record.birth_date:
+                record.age = 0
+                continue
+            if (
+                fields.Date.today().month < record.birth_date.month
+                or fields.Date.today().month == record.birth_date.month
+                and fields.Date.today().day < record.birth_date.day
+            ):
+                record.age = fields.Date.today().year - record.birth_date.year - 1
+            else:
+                record.age = fields.Date.today().year - record.birth_date.year
