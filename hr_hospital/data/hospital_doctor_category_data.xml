@@ -3,6 +3,7 @@
     <record id="doctor_category_intern" model="hospital.doctor.category">
         <field name="name">Лікар-інтерн</field>
         <field name="sequence">10</field>
+        <field name="is_internship" eval="True"/>
     </record>
 
     <record id="doctor_category_specialist" model="hospital.doctor.category">

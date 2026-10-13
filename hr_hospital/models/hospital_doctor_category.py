@@ -12,6 +12,7 @@ class HospitalDoctorCategory(models.Model):
 
     name = fields.Char(required=True)
     sequence = fields.Integer(default=10)
+    is_internship = fields.Boolean(string="Internship")
     doctor_ids = fields.One2many(
         comodel_name="hr.hospital.doctor",
         inverse_name="category_id",

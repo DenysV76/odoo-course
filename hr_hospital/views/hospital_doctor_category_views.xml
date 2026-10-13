@@ -6,6 +6,7 @@
             <list>
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
+                <field name="is_internship"/>
             </list>
         </field>
     </record>
@@ -19,6 +20,7 @@
                     <group>
                         <field name="name"/>
                         <field name="sequence"/>
+                        <field name="is_internship"/>
                     </group>
                     <field name="doctor_ids"/>
                 </sheet>

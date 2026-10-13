@@ -37,11 +37,13 @@ class HrHospitalDoctor(models.Model):
         string="Mentor",
     )
 
-    # TODO(3.4 + 6): справжня логіка is_intern і docstring з обґрунтуванням
-    # (розділ 6 завдання). Поки що заглушка: ніхто не інтерн.
-    @api.depends("category_id")
+    @api.depends("category_id.is_internship")
     def _compute_is_intern(self):
+        """Обрав спосіб - галочка на кваліфікації. Так здається надійніше ніж діставати кваліфікацію за ярлик,
+        бо якщо хтось видалить картку, то код впаде. Плюс, якщо буде створено ще одну інтернську кваліфікацію
+        (Інтерн-хірург), то вона інтерном не вважатиметься.
+        """
         for doctor in self:
-            doctor.is_intern = False
+            doctor.is_intern = doctor.category_id.is_internship
 
     # TODO(3.4): @api.constrains — не можна зберегти, якщо ментор сам інтерн
