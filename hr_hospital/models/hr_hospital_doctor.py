@@ -1,6 +1,7 @@
 import logging
 
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -46,4 +47,9 @@ class HrHospitalDoctor(models.Model):
         for doctor in self:
             doctor.is_intern = doctor.category_id.is_internship
 
-    # TODO(3.4): @api.constrains — не можна зберегти, якщо ментор сам інтерн
+    @api.constrains("mentor_id")
+    def _check_is_intern(self):
+        for doctor in self:
+            if doctor.mentor_id.is_intern:
+                raise ValidationError("Інтерн не може бути Ментором")
+
