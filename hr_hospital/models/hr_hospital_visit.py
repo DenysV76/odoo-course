@@ -1,6 +1,7 @@
 import logging
 
 from odoo import fields, models
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -43,7 +44,13 @@ class HrHospitalVisit(models.Model):
     )
     summary = fields.Html()
 
-    # TODO(3.5.1): заборонити змінювати planned_date, visit_date, doctor_id
-    # у візиту зі state == "done" (перевизначити write)
+    def write(self, vals):
+        for visit in self:
+            if visit.state == "done" and (
+                "planned_date" in vals or "visit_date" in vals or "doctor_id" in vals
+            ):
+                raise ValidationError("Не можна редагувати вже відбувшийся візит")
+        return super().write(vals)
+
     # TODO(3.5.2): заборонити видаляти (unlink) і архівувати (active=False)
     # візити зі state == "done"; не зламати uninstall — див. «Часті помилки» п. 4
