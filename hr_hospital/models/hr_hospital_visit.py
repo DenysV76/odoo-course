@@ -50,7 +50,14 @@ class HrHospitalVisit(models.Model):
                 "planned_date" in vals or "visit_date" in vals or "doctor_id" in vals
             ):
                 raise ValidationError("Не можна редагувати вже відбувшийся візит")
+            if visit.state == "done" and "active" in vals and not vals["active"]:
+                raise ValidationError("Не можна архівувати вже відбувшийся візит")
         return super().write(vals)
 
-    # TODO(3.5.2): заборонити видаляти (unlink) і архівувати (active=False)
-    # візити зі state == "done"; не зламати uninstall — див. «Часті помилки» п. 4
+    def unlink(self):
+        if self.env.context.get("_force_unlink"):
+            return super().unlink()
+        for visit in self:
+            if visit.state == "done":
+                raise ValidationError("Не можна видаляти вже відбувшийся візит")
+        return super().unlink()
