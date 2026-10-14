@@ -27,6 +27,7 @@
         "data/hospital_doctor_category_data.xml",
     ],
     "demo": [
+        "demo/hr_hospital_disease_demo.xml",
         "demo/hr_hospital_doctor_demo.xml",
         "demo/hr_hospital_patient_demo.xml",
         "demo/hospital_doctor_history_demo.xml",

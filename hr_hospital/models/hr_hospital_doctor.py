@@ -52,4 +52,3 @@ class HrHospitalDoctor(models.Model):
         for doctor in self:
             if doctor.mentor_id.is_intern:
                 raise ValidationError("Інтерн не може бути Ментором")
-
