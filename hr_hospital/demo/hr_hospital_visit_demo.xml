@@ -1,0 +1,61 @@
+<odoo>
+
+    <record id="hr_hospital_visit_demo_1" model="hr.hospital.visit">
+        <field name="name">Візит 1</field>
+        <field name="state">planned</field>
+        <field name="planned_date">2026-10-20 09:00:00</field>
+        <field name="doctor_id" ref="hr_hospital_doctor_demo_1"/>
+        <field name="patient_id" ref="hr_hospital_patient_1"/>
+        <field name="disease_id" ref="hr_hospital_disease_flu"/>
+    </record>
+
+    <record id="hr_hospital_visit_demo_2" model="hr.hospital.visit">
+        <field name="name">Візит 2</field>
+        <field name="state">planned</field>
+        <field name="planned_date">2026-10-22 14:30:00</field>
+        <field name="doctor_id" ref="hr_hospital_doctor_demo_2"/>
+        <field name="patient_id" ref="hr_hospital_patient_2"/>
+    </record>
+
+    <record id="hr_hospital_visit_demo_3" model="hr.hospital.visit">
+        <field name="name">Візит 3</field>
+        <field name="state">done</field>
+        <field name="planned_date">2026-09-10 10:00:00</field>
+        <field name="visit_date">2026-09-10 10:15:00</field>
+        <field name="doctor_id" ref="hr_hospital_doctor_demo_2"/>
+        <field name="patient_id" ref="hr_hospital_patient_1"/>
+        <field name="disease_id" ref="hr_hospital_disease_flu"/>
+        <field name="summary"><![CDATA[<p>Огляд проведено, рекомендації надано.</p>]]></field>
+    </record>
+
+    <record id="hr_hospital_visit_demo_4" model="hr.hospital.visit">
+        <field name="name">Візит 4</field>
+        <field name="state">done</field>
+        <field name="planned_date">2026-09-15 11:00:00</field>
+        <field name="visit_date">2026-09-15 11:05:00</field>
+        <field name="doctor_id" ref="hr_hospital_doctor_demo_3"/>
+        <field name="patient_id" ref="hr_hospital_patient_2"/>
+        <field name="disease_id" ref="hr_hospital_disease_covid"/>
+        <field name="summary"><![CDATA[<p>Огляд проведено, рекомендації надано.</p>]]></field>
+    </record>
+
+    <record id="hr_hospital_visit_demo_5" model="hr.hospital.visit">
+        <field name="name">Візит 5</field>
+        <field name="state">done</field>
+        <field name="planned_date">2026-09-25 16:00:00</field>
+        <field name="visit_date">2026-09-25 16:20:00</field>
+        <field name="doctor_id" ref="hr_hospital_doctor_demo_1"/>
+        <field name="patient_id" ref="hr_hospital_patient_3"/>
+        <field name="disease_id" ref="hr_hospital_disease_allergy"/>
+        <field name="summary"><![CDATA[<p>Огляд проведено, рекомендації надано.</p>]]></field>
+    </record>
+
+    <record id="hr_hospital_visit_demo_6" model="hr.hospital.visit">
+        <field name="name">Візит 6</field>
+        <field name="state">cancelled</field>
+        <field name="planned_date">2026-09-28 12:00:00</field>
+        <field name="doctor_id" ref="hr_hospital_doctor_demo_3"/>
+        <field name="patient_id" ref="hr_hospital_patient_3"/>
+    </record>
+
+</odoo>

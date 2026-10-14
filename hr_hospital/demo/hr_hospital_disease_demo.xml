@@ -1,0 +1,27 @@
+<odoo>
+
+    <record id="hr_hospital_disease_infectious" model="hr.hospital.disease">
+        <field name="name">Інфекційні</field>
+    </record>
+
+    <record id="hr_hospital_disease_viral" model="hr.hospital.disease">
+        <field name="name">Вірусні</field>
+        <field name="parent_id" ref="hr_hospital_disease_infectious"/>
+    </record>
+
+    <record id="hr_hospital_disease_bacterial" model="hr.hospital.disease">
+        <field name="name">Бактеріальні</field>
+        <field name="parent_id" ref="hr_hospital_disease_infectious"/>
+    </record>
+
+    <record id="hr_hospital_disease_ari" model="hr.hospital.disease">
+        <field name="name">ГРВІ</field>
+        <field name="parent_id" ref="hr_hospital_disease_viral"/>
+    </record>
+
+    <record id="hr_hospital_disease_tonsillitis" model="hr.hospital.disease">
+        <field name="name">Ангіна</field>
+        <field name="parent_id" ref="hr_hospital_disease_bacterial"/>
+    </record>
+
+</odoo>

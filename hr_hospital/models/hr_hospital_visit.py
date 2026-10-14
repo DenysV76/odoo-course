@@ -1,6 +1,7 @@
 import logging
 
 from odoo import fields, models
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -9,10 +10,20 @@ class HrHospitalVisit(models.Model):
     _name = "hr.hospital.visit"
     _description = "Visit"
 
-    visit_date = fields.Datetime(
-        string="Visit Date",
+    state = fields.Selection(
+        selection=[
+            ("planned", "Planned"),
+            ("done", "Done"),
+            ("cancelled", "Cancelled"),
+        ],
+        default="planned",
+        required=True,
+    )
+    planned_date = fields.Datetime(
+        string="Planned Date",
         default=fields.Datetime.now,
     )
+    visit_date = fields.Datetime(string="Actual Visit Date")
 
     name = fields.Char()
 
@@ -31,3 +42,22 @@ class HrHospitalVisit(models.Model):
         comodel_name="hr.hospital.disease",
         string="Disease",
     )
+    summary = fields.Html()
+
+    def write(self, vals):
+        for visit in self:
+            if visit.state == "done" and (
+                "planned_date" in vals or "visit_date" in vals or "doctor_id" in vals
+            ):
+                raise ValidationError("Не можна редагувати вже відбувшийся візит")
+            if visit.state == "done" and "active" in vals and not vals["active"]:
+                raise ValidationError("Не можна архівувати вже відбувшийся візит")
+        return super().write(vals)
+
+    def unlink(self):
+        if self.env.context.get("_force_unlink"):
+            return super().unlink()
+        for visit in self:
+            if visit.state == "done":
+                raise ValidationError("Не можна видаляти вже відбувшийся візит")
+        return super().unlink()

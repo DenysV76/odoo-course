@@ -1,6 +1,10 @@
 line-length = 88
 target-version = "py312"
 
+[lint]
+# Odoo model attributes (_rec_names_search, _inherit lists) are class-level by design.
+ignore = ["RUF012"]
+
 [lint.per-file-ignores]
 # Imports in __init__.py register models; Odoo keeps one per line, order matters.
 "__init__.py" = ["F401", "I001"]

@@ -2,15 +2,30 @@
 
     <record id="hr_hospital_patient_1" model="hr.hospital.patient">
         <field name="name">Пацієнт 1</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1985-04-12</field>
+        <field name="blood_type">a_pos</field>
+        <field name="personal_doctor_id" ref="hr_hospital_doctor_demo_2"/>
+        <field name="insurance_number">UA-0001-2026</field>
     </record>
 
     <record id="hr_hospital_patient_2" model="hr.hospital.patient">
         <field name="name">Пацієнт 2</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1992-11-03</field>
+        <field name="blood_type">o_neg</field>
+        <field name="personal_doctor_id" ref="hr_hospital_doctor_demo_3"/>
+        <field name="insurance_number">UA-0002-2026</field>
     </record>
 
     <record id="hr_hospital_patient_3" model="hr.hospital.patient">
         <field name="name">Пацієнт 3</field>
         <field name="description">Алергік</field>
+        <field name="gender">female</field>
+        <field name="birth_date">2001-07-21</field>
+        <field name="blood_type">b_pos</field>
+        <field name="personal_doctor_id" ref="hr_hospital_doctor_demo_1"/>
+        <field name="insurance_number">UA-0003-2026</field>
     </record>
 
 </odoo>
