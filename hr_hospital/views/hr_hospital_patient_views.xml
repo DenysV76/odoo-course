@@ -5,6 +5,7 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
+                <field name="phone"/>
                 <field name="personal_doctor_id"/>
                 <field name="age"/>
                 <field name="blood_type" optional="show"/>
@@ -19,10 +20,31 @@
         <field name="model">hr.hospital.patient</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <!--
+                        Quick visit creation (task 6). Chosen: a type="object" button whose method
+                        returns an act_window with target "new" and default_patient_id in its context;
+                        the new visit form reads that default_* key, so the patient is pre-filled.
+                        Considered: a type="action" button on a separate XML action with
+                        context="{'default_patient_id': id}" - it works too, but splits the behaviour
+                        between two records, while the method keeps it in one testable place that the
+                        doctor kanban reuses. quick_create was rejected: it only creates records of the
+                        kanban's own model, not visits.
+                    -->
+                    <button name="action_create_visit" type="object"
+                            string="New Visit" class="btn-primary"/>
+                </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_visits" type="object"
+                                class="oe_stat_button" icon="fa-calendar">
+                            <field name="visit_count" widget="statinfo" string="Visits"/>
+                        </button>
+                    </div>
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="phone" widget="phone"/>
                             <field name="personal_doctor_id"/>
                             <field name="insurance_number"/>
                             <field name="description"/>
@@ -47,6 +69,26 @@
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="hr_hospital_patient_view_search" model="ir.ui.view">
+        <field name="name">hr.hospital.patient.search</field>
+        <field name="model">hr.hospital.patient</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name or Phone"
+                       filter_domain="['|', ('name', 'ilike', self), ('phone', 'ilike', self)]"/>
+                <field name="phone"/>
+                <field name="personal_doctor_id"/>
+                <separator/>
+                <filter name="filter_archived" string="Archived"
+                        domain="[('active', '=', False)]"/>
+                <group>
+                    <filter name="group_by_personal_doctor" string="Personal Doctor"
+                            context="{'group_by': 'personal_doctor_id'}"/>
+                </group>
+            </search>
         </field>
     </record>
 
