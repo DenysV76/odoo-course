@@ -1,6 +1,6 @@
 import logging
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -28,3 +28,39 @@ class HrHospitalPatient(models.Model):
         string="Insurance Policy Number",
         size=20,
     )
+    phone = fields.Char()
+    visit_ids = fields.One2many(
+        comodel_name="hr.hospital.visit",
+        inverse_name="patient_id",
+        string="Visits",
+    )
+    visit_count = fields.Integer(compute="_compute_visit_count")
+
+    @api.depends("visit_ids")
+    def _compute_visit_count(self):
+        for patient in self:
+            patient.visit_count = len(patient.visit_ids)
+
+    def action_open_visits(self):
+        """Open the visit history of this patient."""
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "name": "Visits",
+            "res_model": "hr.hospital.visit",
+            "view_mode": "list,form,calendar",
+            "domain": [("patient_id", "=", self.id)],
+            "context": {"default_patient_id": self.id},
+        }
+
+    def action_create_visit(self):
+        """Open a new visit form in a dialog with this patient pre-filled."""
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "name": "New Visit",
+            "res_model": "hr.hospital.visit",
+            "view_mode": "form",
+            "target": "new",
+            "context": {"default_patient_id": self.id},
+        }

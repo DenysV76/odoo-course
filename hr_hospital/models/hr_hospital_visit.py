@@ -1,6 +1,6 @@
 import logging
 
-from odoo import fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
@@ -8,6 +8,7 @@ _logger = logging.getLogger(__name__)
 
 class HrHospitalVisit(models.Model):
     _name = "hr.hospital.visit"
+    _inherit = ["mail.thread"]
     _description = "Visit"
 
     state = fields.Selection(
@@ -18,6 +19,7 @@ class HrHospitalVisit(models.Model):
         ],
         default="planned",
         required=True,
+        tracking=True,
     )
     planned_date = fields.Datetime(
         string="Planned Date",
@@ -33,6 +35,7 @@ class HrHospitalVisit(models.Model):
     doctor_id = fields.Many2one(
         comodel_name="hr.hospital.doctor",
         string="Doctor",
+        tracking=True,
     )
     patient_id = fields.Many2one(
         comodel_name="hr.hospital.patient",
@@ -43,6 +46,59 @@ class HrHospitalVisit(models.Model):
         string="Disease",
     )
     summary = fields.Html()
+    disease_visit_count = fields.Integer(
+        string="Visits with This Disease",
+        compute="_compute_disease_visit_count",
+    )
+
+    @api.depends("patient_id.name", "name", "planned_date")
+    def _compute_display_name(self):
+        for visit in self:
+            label = visit.patient_id.name or visit.name or "Новий візит"
+            if visit.planned_date:
+                label = f"{label} — {visit.planned_date:%d.%m.%Y}"
+            visit.display_name = label
+
+    @api.depends("disease_id")
+    def _compute_disease_visit_count(self):
+        """Count all visits sharing each visit's disease, in one grouped query."""
+        counts = dict(
+            self._read_group(
+                [("disease_id", "in", self.disease_id.ids)],
+                ["disease_id"],
+                ["__count"],
+            )
+        )
+        for visit in self:
+            visit.disease_visit_count = counts.get(visit.disease_id, 0)
+
+    def action_open_disease_visits(self):
+        """Open all visits with the same disease as this one (stat button)."""
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "name": self.disease_id.display_name,
+            "res_model": "hr.hospital.visit",
+            "view_mode": "list,form",
+            "domain": [("disease_id", "=", self.disease_id.id)],
+        }
+
+    @api.model
+    def _cron_cancel_overdue_visits(self):
+        """Cancel planned visits whose planned date has already passed.
+
+        Used both by the server action and by the daily cron, so it searches
+        by itself instead of relying on selected records.
+        """
+        overdue = self.search(
+            [
+                ("state", "=", "planned"),
+                ("planned_date", "<", fields.Datetime.now()),
+            ]
+        )
+        overdue.write({"state": "cancelled"})
+        _logger.info("Cancelled %s overdue visits", len(overdue))
+        return True
 
     def write(self, vals):
         for visit in self:

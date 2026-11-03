@@ -8,6 +8,7 @@
     "version": "19.0.1.0.0",
     "depends": [
         "base",
+        "mail",
     ],
     "external_dependencies": {
         "python": [],
@@ -23,8 +24,10 @@
         "views/hospital_doctor_history_views.xml",
         "wizard/mass_reassign_doctor_wizard_views.xml",
         "wizard/visit_report_wizard_views.xml",
+        "wizard/disease_report_wizard_views.xml",
         "data/hr_hospital_disease_data.xml",
         "data/hospital_doctor_category_data.xml",
+        "data/hr_hospital_visit_cron_data.xml",
     ],
     "demo": [
         "demo/hr_hospital_disease_demo.xml",

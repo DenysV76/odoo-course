@@ -24,4 +24,20 @@
         <field name="mentor_id" ref="hr_hospital_doctor_demo_1"/>
     </record>
 
+    <record id="hr_hospital_doctor_demo_4" model="hr.hospital.doctor">
+        <field name="name">Коваль Андрій</field>
+        <field name="category_id" ref="doctor_category_intern"/>
+        <field name="gender">male</field>
+        <field name="birth_date">2000-03-14</field>
+        <field name="mentor_id" ref="hr_hospital_doctor_demo_1"/>
+    </record>
+
+    <record id="hr_hospital_doctor_demo_5" model="hr.hospital.doctor">
+        <field name="name">Мельник Ірина</field>
+        <field name="category_id" ref="doctor_category_intern"/>
+        <field name="gender">female</field>
+        <field name="birth_date">2001-12-02</field>
+        <field name="mentor_id" ref="hr_hospital_doctor_demo_2"/>
+    </record>
+
 </odoo>
