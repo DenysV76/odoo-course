@@ -7,6 +7,8 @@ _logger = logging.getLogger(__name__)
 
 
 class VisitReportWizard(models.TransientModel):
+    """Wizard that opens visits filtered by doctors, patients, period and disease."""
+
     _name = "visit.report.wizard"
     _description = "Patient Visits Report"
 

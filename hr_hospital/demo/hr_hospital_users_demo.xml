@@ -1,0 +1,64 @@
+<odoo>
+
+    <!--
+        One demo user per group of the ladder; login = password (demo only).
+        Each user is linked to its doctor or patient card, otherwise the record rules
+        ('doctor_id.user_id', '=', user.id) have nobody to match.
+    -->
+
+    <record id="hr_hospital_user_patient" model="res.users">
+        <field name="name">Шевченко Тарас</field>
+        <field name="login">hospital_patient</field>
+        <field name="password">hospital_patient</field>
+        <field name="tz">Europe/Kyiv</field>
+        <field name="group_ids" eval="[(6, 0, [ref('group_hospital_patient')])]"/>
+    </record>
+    <record id="hr_hospital_patient_1" model="hr.hospital.patient">
+        <field name="user_id" ref="hr_hospital_user_patient"/>
+    </record>
+
+    <record id="hr_hospital_user_intern" model="res.users">
+        <field name="name">Сидоренко Соломія</field>
+        <field name="login">hospital_intern</field>
+        <field name="password">hospital_intern</field>
+        <field name="tz">Europe/Kyiv</field>
+        <field name="group_ids" eval="[(6, 0, [ref('group_hospital_intern')])]"/>
+    </record>
+    <record id="hr_hospital_doctor_demo_3" model="hr.hospital.doctor">
+        <field name="user_id" ref="hr_hospital_user_intern"/>
+    </record>
+
+    <record id="hr_hospital_user_doctor" model="res.users">
+        <field name="name">Іваненко Петро</field>
+        <field name="login">hospital_doctor</field>
+        <field name="password">hospital_doctor</field>
+        <field name="tz">Europe/Kyiv</field>
+        <field name="group_ids" eval="[(6, 0, [ref('group_hospital_doctor')])]"/>
+    </record>
+    <record id="hr_hospital_doctor_demo_1" model="hr.hospital.doctor">
+        <field name="user_id" ref="hr_hospital_user_doctor"/>
+    </record>
+
+    <record id="hr_hospital_user_manager" model="res.users">
+        <field name="name">Петренко Олена</field>
+        <field name="login">hospital_manager</field>
+        <field name="password">hospital_manager</field>
+        <field name="tz">Europe/Kyiv</field>
+        <field name="group_ids" eval="[(6, 0, [ref('group_hospital_manager')])]"/>
+    </record>
+    <record id="hr_hospital_doctor_demo_2" model="hr.hospital.doctor">
+        <field name="user_id" ref="hr_hospital_user_manager"/>
+    </record>
+
+    <record id="hr_hospital_user_admin" model="res.users">
+        <field name="name">Бойко Олег</field>
+        <field name="login">hospital_admin</field>
+        <field name="password">hospital_admin</field>
+        <field name="tz">Europe/Kyiv</field>
+        <field name="group_ids" eval="[(6, 0, [ref('group_hospital_admin')])]"/>
+    </record>
+    <record id="hr_hospital_doctor_demo_6" model="hr.hospital.doctor">
+        <field name="user_id" ref="hr_hospital_user_admin"/>
+    </record>
+
+</odoo>

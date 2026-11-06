@@ -7,6 +7,8 @@ _logger = logging.getLogger(__name__)
 
 
 class HrHospitalVisit(models.Model):
+    """Visit of a patient to a doctor: planned, done or cancelled."""
+
     _name = "hr.hospital.visit"
     _inherit = ["mail.thread"]
     _description = "Visit"
@@ -53,8 +55,9 @@ class HrHospitalVisit(models.Model):
 
     @api.depends("patient_id.name", "name", "planned_date")
     def _compute_display_name(self):
+        """Show the patient (or visit name) and the planned date."""
         for visit in self:
-            label = visit.patient_id.name or visit.name or "Новий візит"
+            label = visit.patient_id.name or visit.name or self.env._("New Visit")
             if visit.planned_date:
                 label = f"{label} — {visit.planned_date:%d.%m.%Y}"
             visit.display_name = label
@@ -101,19 +104,27 @@ class HrHospitalVisit(models.Model):
         return True
 
     def write(self, vals):
+        """Protect done visits: their date and doctor cannot change and they cannot be archived."""
         for visit in self:
             if visit.state == "done" and (
                 "planned_date" in vals or "visit_date" in vals or "doctor_id" in vals
             ):
-                raise ValidationError("Не можна редагувати вже відбувшийся візит")
+                raise ValidationError(
+                    self.env._("A visit that is already done cannot be edited.")
+                )
             if visit.state == "done" and "active" in vals and not vals["active"]:
-                raise ValidationError("Не можна архівувати вже відбувшийся візит")
+                raise ValidationError(
+                    self.env._("A visit that is already done cannot be archived.")
+                )
         return super().write(vals)
 
     def unlink(self):
+        """Forbid deleting done visits unless the _force_unlink context key is set."""
         if self.env.context.get("_force_unlink"):
             return super().unlink()
         for visit in self:
             if visit.state == "done":
-                raise ValidationError("Не можна видаляти вже відбувшийся візит")
+                raise ValidationError(
+                    self.env._("A visit that is already done cannot be deleted.")
+                )
         return super().unlink()

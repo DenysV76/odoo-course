@@ -24,7 +24,7 @@
     </record>
 
     <record id="disease_report_wizard_action" model="ir.actions.act_window">
-        <field name="name">Звіт по хворобах</field>
+        <field name="name">Disease Report</field>
         <field name="res_model">disease.report.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>

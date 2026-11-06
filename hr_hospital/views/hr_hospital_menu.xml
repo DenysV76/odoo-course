@@ -1,7 +1,8 @@
 <odoo>
 
     <menuitem id="hr_hospital_menu_root"
-              name="Лікарня"
+              name="Hospital"
+              groups="group_hospital_patient"
               sequence="300"/>
 
 </odoo>

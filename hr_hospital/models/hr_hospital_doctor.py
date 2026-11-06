@@ -7,6 +7,8 @@ _logger = logging.getLogger(__name__)
 
 
 class HrHospitalDoctor(models.Model):
+    """Doctor of the hospital; interns are linked to a mentor doctor."""
+
     _name = "hr.hospital.doctor"
     _inherit = "hospital.medic.info"
     _description = "Doctor"
@@ -64,15 +66,18 @@ class HrHospitalDoctor(models.Model):
 
     @api.depends("category_id.is_internship")
     def _compute_is_intern(self):
-        """Обрав спосіб - галочка на кваліфікації. Так здається надійніше ніж діставати кваліфікацію за ярлик,
-        бо якщо хтось видалить картку, то код впаде. Плюс, якщо буде створено ще одну інтернську кваліфікацію
-        (Інтерн-хірург), то вона інтерном не вважатиметься.
+        """A doctor is an intern when their category has the Internship flag.
+
+        The flag is more robust than looking the category up by XML id: the
+        code does not break if the record is deleted, and any new internship
+        category (e.g. "Intern Surgeon") is recognised without code changes.
         """
         for doctor in self:
             doctor.is_intern = doctor.category_id.is_internship
 
     @api.depends("intern_ids")
     def _compute_intern_count(self):
+        """Number of interns mentored by the doctor."""
         for doctor in self:
             doctor.intern_count = len(doctor.intern_ids)
 
@@ -101,6 +106,7 @@ class HrHospitalDoctor(models.Model):
 
     @api.constrains("mentor_id")
     def _check_is_intern(self):
+        """Forbid choosing an intern as a mentor."""
         for doctor in self:
             if doctor.mentor_id.is_intern:
-                raise ValidationError("Інтерн не може бути Ментором")
+                raise ValidationError(self.env._("An intern cannot be a mentor."))

@@ -1,0 +1,49 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Hospital</h2>
+        <h3 class="oe_slogan">Doctors, patients and visits in one place</h3>
+        <div class="oe_span12">
+            <img class="img-fluid" src="banner.png" alt="Hospital module banner"/>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3>What the module does</h3>
+        <ul>
+            <li>Doctors with categories, mentors and interns; a kanban grouped by category.</li>
+            <li>Patients with a personal doctor and its change history.</li>
+            <li>Visits with planned / done / cancelled states, calendar, pivot and graph views.</li>
+            <li>Hierarchical disease classifier with translatable names.</li>
+            <li>PDF "Doctor Report": visit history and patients of each doctor.</li>
+            <li>Wizards: visit report, disease report, mass reassignment of the personal doctor.</li>
+            <li>Daily cron that cancels overdue planned visits.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3>Access rights</h3>
+        <p>Five groups in the <b>Hospital</b> section of user settings, each one including the previous:</p>
+        <table class="table table-sm">
+            <thead><tr><th>Group</th><th>Visits</th></tr></thead>
+            <tbody>
+                <tr><td>Patient</td><td>reads own visits</td></tr>
+                <tr><td>Intern</td><td>reads and edits own visits</td></tr>
+                <tr><td>Doctor</td><td>reads and edits own visits and visits of own interns</td></tr>
+                <tr><td>Manager</td><td>reads and edits all visits, cannot delete</td></tr>
+                <tr><td>Administrator</td><td>full access, including deletion</td></tr>
+            </tbody>
+        </table>
+        <p>Internal users outside these groups do not see the module data.</p>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h3>Languages</h3>
+        <p>English and Ukrainian (interface and disease names).</p>
+    </div>
+</section>

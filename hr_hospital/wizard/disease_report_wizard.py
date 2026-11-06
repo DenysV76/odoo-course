@@ -4,6 +4,8 @@ from odoo import api, fields, models
 
 
 class DiseaseReportWizard(models.TransientModel):
+    """Wizard that opens visits of chosen doctors and diseases grouped by disease."""
+
     _name = "disease.report.wizard"
     _description = "Disease Report"
 

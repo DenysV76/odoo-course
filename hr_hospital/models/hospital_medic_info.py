@@ -6,6 +6,8 @@ _logger = logging.getLogger(__name__)
 
 
 class HospitalMedicInfo(models.AbstractModel):
+    """Medical fields shared by doctors and patients (gender, birth date, blood type)."""
+
     _name = "hospital.medic.info"
     _description = "Medical Info (abstract)"
 
@@ -33,6 +35,7 @@ class HospitalMedicInfo(models.AbstractModel):
 
     @api.depends("birth_date")
     def _compute_age(self):
+        """Full years from the birth date to today; 0 when the date is empty."""
         for record in self:
             if not record.birth_date:
                 record.age = 0

@@ -1,7 +1,7 @@
 <odoo>
 
     <record id="hr_hospital_disease_flu" model="hr.hospital.disease">
-        <field name="name">Грип</field>
+        <field name="name">Flu</field>
     </record>
 
     <record id="hr_hospital_disease_covid" model="hr.hospital.disease">
@@ -9,7 +9,7 @@
     </record>
 
     <record id="hr_hospital_disease_allergy" model="hr.hospital.disease">
-        <field name="name">Алергія</field>
+        <field name="name">Allergy</field>
     </record>
 
 </odoo>
