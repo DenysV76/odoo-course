@@ -19,7 +19,7 @@
     </record>
 
     <record id="mass_reassign_doctor_wizard_action" model="ir.actions.act_window">
-        <field name="name">Перепризначити персонального лікаря</field>
+        <field name="name">Reassign Personal Doctor</field>
         <field name="res_model">mass.reassign.doctor.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>

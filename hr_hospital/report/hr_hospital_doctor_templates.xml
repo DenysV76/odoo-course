@@ -50,7 +50,7 @@
                                 <tr t-foreach="visits" t-as="visit">
                                     <td><span t-field="visit.planned_date" t-options='{"format": "dd.MM.yyyy HH:mm"}'/></td>
                                     <td><span t-out="visit.patient_id.name"/></td>
-                                    <td><span t-out="visit.disease_id.complete_name or ''"/></td>
+                                    <td><span t-out="visit.disease_id.display_name or ''"/></td>
                                     <td>
                                         <span t-field="visit.state" class="px-2 rounded"
                                               t-attf-style="background-color: {{ state_colors.get(visit.state) }}; color: #fff;"/>

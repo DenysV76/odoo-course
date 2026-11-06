@@ -23,7 +23,8 @@
             <form>
                 <header>
                     <button name="action_create_visit" type="object"
-                            string="New Visit" class="btn-primary"/>
+                            string="New Visit" class="btn-primary"
+                            groups="hr_hospital.group_hospital_intern"/>
                 </header>
                 <sheet>
                     <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger"
@@ -93,7 +94,8 @@
                         </div>
                         <footer>
                             <button name="action_create_visit" type="object"
-                                    string="New Visit" class="btn btn-sm btn-primary"/>
+                                    string="New Visit" class="btn btn-sm btn-primary"
+                                    groups="hr_hospital.group_hospital_intern"/>
                         </footer>
                     </t>
                     <t t-name="menu">
@@ -134,7 +136,7 @@
     </record>
 
     <record id="hr_hospital_doctor_action" model="ir.actions.act_window">
-        <field name="name">Лікарі</field>
+        <field name="name">Doctors</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hospital.doctor</field>
         <field name="view_mode">list,kanban,form</field>
@@ -143,6 +145,6 @@
     <menuitem id="hr_hospital_doctor_menu"
               action="hr_hospital_doctor_action"
               parent="hr_hospital_menu_root"
-              name="Лікарі" sequence="200"/>
+              name="Doctors" sequence="200"/>
 
 </odoo>

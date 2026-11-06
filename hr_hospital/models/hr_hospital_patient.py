@@ -6,6 +6,8 @@ _logger = logging.getLogger(__name__)
 
 
 class HrHospitalPatient(models.Model):
+    """Patient of the hospital with a personal doctor and visit history."""
+
     _name = "hr.hospital.patient"
     _inherit = "hospital.medic.info"
     _description = "Patient"
@@ -29,6 +31,11 @@ class HrHospitalPatient(models.Model):
         size=20,
     )
     phone = fields.Char()
+    user_id = fields.Many2one(
+        comodel_name="res.users",
+        string="System User",
+        help="Login of the patient; record rules show a patient only their own data.",
+    )
     visit_ids = fields.One2many(
         comodel_name="hr.hospital.visit",
         inverse_name="patient_id",
@@ -38,6 +45,7 @@ class HrHospitalPatient(models.Model):
 
     @api.depends("visit_ids")
     def _compute_visit_count(self):
+        """Number of visits of the patient, for the stat button."""
         for patient in self:
             patient.visit_count = len(patient.visit_ids)
 

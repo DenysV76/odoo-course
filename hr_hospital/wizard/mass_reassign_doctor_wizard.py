@@ -6,6 +6,8 @@ _logger = logging.getLogger(__name__)
 
 
 class MassReassignDoctorWizard(models.TransientModel):
+    """Wizard that assigns a new personal doctor to several patients at once."""
+
     _name = "mass.reassign.doctor.wizard"
     _description = "Mass Reassign Personal Doctor"
 

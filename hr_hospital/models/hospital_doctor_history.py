@@ -6,6 +6,8 @@ _logger = logging.getLogger(__name__)
 
 
 class HospitalDoctorHistory(models.Model):
+    """History of personal doctors of a patient; one active line per patient."""
+
     _name = "hospital.doctor.history"
     _description = "Personal Doctor History"
     _order = "assign_date desc, id desc"
@@ -30,6 +32,7 @@ class HospitalDoctorHistory(models.Model):
 
     @api.onchange("assign_date", "change_date")
     def _onchange_assign_date(self):
+        """Warn when the change date is set before the assignment date."""
         if (
             self.assign_date
             and self.change_date
@@ -37,8 +40,10 @@ class HospitalDoctorHistory(models.Model):
         ):
             return {
                 "warning": {
-                    "title": "Увага",
-                    "message": "Дата зміни лікаря не може бути раніше ніж дата призначення",
+                    "title": self.env._("Warning"),
+                    "message": self.env._(
+                        "The doctor change date cannot be earlier than the assignment date."
+                    ),
                 }
             }
 
@@ -48,5 +53,6 @@ class HospitalDoctorHistory(models.Model):
         "patient_id.name", "doctor_id.name", "doctor_id.category_id.name", "assign_date"
     )
     def _compute_display_name(self):
+        """Show patient, doctor, doctor category and assignment date."""
         for record in self:
             record.display_name = f"{record.patient_id.name} - {record.doctor_id.name} ({record.doctor_id.category_id.name}) {record.assign_date}"

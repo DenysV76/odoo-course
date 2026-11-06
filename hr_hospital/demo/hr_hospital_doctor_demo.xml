@@ -40,4 +40,12 @@
         <field name="mentor_id" ref="hr_hospital_doctor_demo_2"/>
     </record>
 
+    <record id="hr_hospital_doctor_demo_6" model="hr.hospital.doctor">
+        <field name="name">Бойко Олег</field>
+        <field name="description">Chief physician</field>
+        <field name="category_id" ref="doctor_category_highest"/>
+        <field name="gender">male</field>
+        <field name="birth_date">1965-06-25</field>
+    </record>
+
 </odoo>

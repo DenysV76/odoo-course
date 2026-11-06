@@ -40,7 +40,7 @@
     </record>
 
     <record id="hr_hospital_disease_action" model="ir.actions.act_window">
-        <field name="name">Хвороби</field>
+        <field name="name">Diseases</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hospital.disease</field>
         <field name="view_mode">list,form</field>
@@ -49,6 +49,6 @@
     <menuitem id="hr_hospital_disease_menu"
               action="hr_hospital_disease_action"
               parent="hr_hospital_menu_root"
-              name="Хвороби" sequence="300"/>
+              name="Diseases" sequence="300"/>
 
 </odoo>

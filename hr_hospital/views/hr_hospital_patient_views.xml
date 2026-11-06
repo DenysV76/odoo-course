@@ -32,7 +32,8 @@
                         kanban's own model, not visits.
                     -->
                     <button name="action_create_visit" type="object"
-                            string="New Visit" class="btn-primary"/>
+                            string="New Visit" class="btn-primary"
+                            groups="hr_hospital.group_hospital_intern"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -47,6 +48,7 @@
                             <field name="phone" widget="phone"/>
                             <field name="personal_doctor_id"/>
                             <field name="insurance_number"/>
+                            <field name="user_id"/>
                             <field name="description"/>
                         </group>
                         <group string="Medical Info">
@@ -93,7 +95,7 @@
     </record>
 
     <record id="hr_hospital_patient_action" model="ir.actions.act_window">
-        <field name="name">Пацієнти</field>
+        <field name="name">Patients</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hospital.patient</field>
         <field name="view_mode">list,form</field>
@@ -102,6 +104,6 @@
     <menuitem id="hr_hospital_patient_menu"
               action="hr_hospital_patient_action"
               parent="hr_hospital_menu_root"
-              name="Пацієнти" sequence="100"/>
+              name="Patients" sequence="100"/>
 
 </odoo>

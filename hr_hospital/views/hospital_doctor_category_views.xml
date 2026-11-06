@@ -29,7 +29,7 @@
     </record>
 
     <record id="hospital_doctor_category_action" model="ir.actions.act_window">
-        <field name="name">Кваліфікації лікарів</field>
+        <field name="name">Doctor Categories</field>
         <field name="res_model">hospital.doctor.category</field>
         <field name="view_mode">list,form</field>
     </record>
@@ -37,6 +37,7 @@
     <menuitem id="hospital_doctor_category_menu"
               action="hospital_doctor_category_action"
               parent="hr_hospital_menu_root"
-              name="Кваліфікації" sequence="600"/>
+              groups="group_hospital_manager"
+              name="Categories" sequence="600"/>
 
 </odoo>
