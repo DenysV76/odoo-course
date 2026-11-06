@@ -25,6 +25,8 @@
         "wizard/mass_reassign_doctor_wizard_views.xml",
         "wizard/visit_report_wizard_views.xml",
         "wizard/disease_report_wizard_views.xml",
+        "report/hr_hospital_doctor_reports.xml",
+        "report/hr_hospital_doctor_templates.xml",
         "data/hr_hospital_disease_data.xml",
         "data/hospital_doctor_category_data.xml",
         "data/hr_hospital_visit_cron_data.xml",

@@ -51,6 +51,16 @@ class HrHospitalDoctor(models.Model):
         string="Interns",
     )
     intern_count = fields.Integer(compute="_compute_intern_count")
+    visit_ids = fields.One2many(
+        comodel_name="hr.hospital.visit",
+        inverse_name="doctor_id",
+        string="Visits",
+    )
+    patient_ids = fields.One2many(
+        comodel_name="hr.hospital.patient",
+        inverse_name="personal_doctor_id",
+        string="Personal Patients",
+    )
 
     @api.depends("category_id.is_internship")
     def _compute_is_intern(self):
@@ -77,6 +87,17 @@ class HrHospitalDoctor(models.Model):
             "target": "new",
             "context": {"default_doctor_id": self.id},
         }
+
+    def _get_report_visits(self):
+        """Visits of the doctor for the PDF report, newest first."""
+        self.ensure_one()
+        return self.visit_ids.sorted("planned_date", reverse=True)
+
+    def _get_report_patients(self):
+        """Patients of the doctor for the PDF report: personal patients plus
+        everyone the doctor has had a visit with, sorted by name."""
+        self.ensure_one()
+        return (self.patient_ids | self.visit_ids.patient_id).sorted("name")
 
     @api.constrains("mentor_id")
     def _check_is_intern(self):
