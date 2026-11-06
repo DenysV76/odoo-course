@@ -1,0 +1,100 @@
+<odoo>
+    <template id="hr_hospital_doctor_report_template">
+        <t t-call="web.html_container">
+            <!--
+                Page breaks (task 3). Chosen: one div.article per doctor, with its own div.header
+                and div.footer next to it inside the t-foreach. Odoo cuts every article out as a
+                separate document for wkhtmltopdf, so each doctor starts on a new sheet, and the
+                n-th header/footer is applied to the n-th article on every one of its pages.
+                Considered: a single article for all doctors split by a CSS
+                "page-break-before: always" block - rejected, because then there is only one
+                header/footer for the whole document and the break has to be skipped by hand
+                before the first doctor to avoid an empty first page.
+            -->
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="company" t-value="res_company"/>
+                <div class="header">
+                    <div class="row align-items-center border-bottom pb-2">
+                        <div class="col-3">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
+                                 style="max-height: 60px;" alt="Logo"/>
+                        </div>
+                        <div class="col-9 text-end small">
+                            <strong class="fs-6" t-out="company.name"/>
+                            <div t-out="', '.join(filter(None, [company.street, company.city, company.zip, company.country_id.name]))"/>
+                            <div t-out="' | '.join(filter(None, [company.phone, company.email, company.website]))"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article" t-att-data-oe-model="doc._name" t-att-data-oe-id="doc.id"
+                     t-att-data-oe-lang="doc.env.lang">
+                    <div class="page">
+                        <h2 t-out="doc.name"/>
+                        <h5 class="text-muted" t-out="doc.category_id.name or ''"/>
+
+                        <h4 class="mt-4">Visit History</h4>
+                        <t t-set="visits" t-value="doc._get_report_visits()"/>
+                        <t t-set="state_colors"
+                           t-value="{'planned': '#ffc107', 'done': '#28a745', 'cancelled': '#dc3545'}"/>
+                        <table t-if="visits" class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Planned Date</th>
+                                    <th>Patient</th>
+                                    <th>Disease</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="visits" t-as="visit">
+                                    <td><span t-field="visit.planned_date" t-options='{"format": "dd.MM.yyyy HH:mm"}'/></td>
+                                    <td><span t-out="visit.patient_id.name"/></td>
+                                    <td><span t-out="visit.disease_id.complete_name or ''"/></td>
+                                    <td>
+                                        <span t-field="visit.state" class="px-2 rounded"
+                                              t-attf-style="background-color: {{ state_colors.get(visit.state) }}; color: #fff;"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p t-else="" class="text-muted">No visits.</p>
+
+                        <h4 class="mt-4">Patients</h4>
+                        <t t-set="patients" t-value="doc._get_report_patients()"/>
+                        <table t-if="patients" class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Birth Date</th>
+                                    <th>Phone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="patients" t-as="patient">
+                                    <td><span t-out="patient.name"/></td>
+                                    <td><span t-field="patient.gender"/></td>
+                                    <td><span t-field="patient.birth_date" t-options='{"format": "dd.MM.yyyy"}'/></td>
+                                    <td><span t-out="patient.phone or ''"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p t-else="" class="text-muted">No patients.</p>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <div class="row border-top pt-1 small">
+                        <div class="col-6">
+                            Printed: <span t-out="', '.join(filter(None, [context_timestamp(datetime.datetime.now()).strftime('%d.%m.%Y %H:%M'), company.city]))"/>
+                        </div>
+                        <div class="col-6 text-end">
+                            Page <span class="page"/> / <span class="topage"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

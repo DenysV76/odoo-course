@@ -87,8 +87,9 @@
                         <div t-if="record.mentor_id.raw_value" class="text-muted">
                             Mentor: <field name="mentor_id"/>
                         </div>
-                        <div t-if="record.intern_count.raw_value" class="text-muted">
-                            Interns: <field name="intern_count"/>
+                        <div t-if="record.intern_ids.raw_value.length">
+                            <span class="text-muted">Interns:</span>
+                            <field name="intern_ids" widget="many2many_tags"/>
                         </div>
                         <footer>
                             <button name="action_create_visit" type="object"
