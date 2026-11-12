@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="qa_test_management_menu_root"
+              name="QA"
+              web_icon="qa_test_management,static/description/icon.png"
+              groups="group_qa_user"
+              sequence="45"/>
+
+    <menuitem id="qa_test_management_menu_testing"
+              name="Testing"
+              parent="qa_test_management_menu_root"
+              sequence="10"/>
+
+    <menuitem id="qa_test_management_menu_library"
+              name="Library"
+              parent="qa_test_management_menu_root"
+              sequence="20"/>
+
+    <menuitem id="qa_test_management_menu_configuration"
+              name="Configuration"
+              parent="qa_test_management_menu_root"
+              groups="group_qa_admin"
+              sequence="90"/>
+</odoo>

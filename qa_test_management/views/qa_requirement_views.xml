@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="qa_requirement_view_list" model="ir.ui.view">
+        <field name="name">qa.requirement.list</field>
+        <field name="model">qa.requirement</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="case_count == 0">
+                <field name="priority" widget="priority" optional="show"/>
+                <field name="name"/>
+                <field name="area_id"/>
+                <field name="task_id" optional="show"/>
+                <field name="case_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="qa_requirement_view_form" model="ir.ui.view">
+        <field name="name">qa.requirement.form</field>
+        <field name="model">qa.requirement</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <widget name="web_ribbon" title="Not Covered" bg_color="text-bg-warning" invisible="case_count or not active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Archived customers are not offered in sale orders"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="area_id"/>
+                            <field name="priority" widget="priority"/>
+                        </group>
+                        <group>
+                            <field name="task_id"/>
+                            <field name="author_id" widget="many2one_avatar_user"/>
+                            <field name="case_count" invisible="1"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <field name="description" placeholder="Acceptance criterion..."/>
+                    <notebook>
+                        <page string="Test Cases" name="cases">
+                            <field name="case_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="area_id"/>
+                                    <field name="priority" widget="priority"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="qa_requirement_view_search" model="ir.ui.view">
+        <field name="name">qa.requirement.search</field>
+        <field name="model">qa.requirement</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="area_id"/>
+                <field name="task_id"/>
+                <filter name="filter_not_covered" string="Not Covered" domain="[('case_ids', '=', False)]"/>
+                <separator/>
+                <filter name="filter_archived" string="Archived" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter name="group_area" string="Functional Area" context="{'group_by': 'area_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="qa_requirement_action" model="ir.actions.act_window">
+        <field name="name">Requirements</field>
+        <field name="res_model">qa.requirement</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="qa_requirement_menu"
+              action="qa_requirement_action"
+              parent="qa_test_management_menu_library"
+              sequence="10"/>
+</odoo>

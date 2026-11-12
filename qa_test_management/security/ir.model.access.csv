@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qa_functional_area_user,qa.functional.area user,model_qa_functional_area,group_qa_user,1,0,0,0
+access_qa_functional_area_admin,qa.functional.area admin,model_qa_functional_area,group_qa_admin,1,1,1,1
+access_qa_tag_user,qa.tag user,model_qa_tag,group_qa_user,1,0,0,0
+access_qa_tag_admin,qa.tag admin,model_qa_tag,group_qa_admin,1,1,1,1
+access_qa_test_case_user,qa.test.case user,model_qa_test_case,group_qa_user,1,1,1,0
+access_qa_test_case_admin,qa.test.case admin,model_qa_test_case,group_qa_admin,1,1,1,1
+access_qa_requirement_user,qa.requirement user,model_qa_requirement,group_qa_user,1,1,1,0
+access_qa_requirement_admin,qa.requirement admin,model_qa_requirement,group_qa_admin,1,1,1,1
+access_qa_test_run_user,qa.test.run user,model_qa_test_run,group_qa_user,1,1,1,0
+access_qa_test_run_admin,qa.test.run admin,model_qa_test_run,group_qa_admin,1,1,1,1
+access_qa_test_run_line_user,qa.test.run.line user,model_qa_test_run_line,group_qa_user,1,1,1,1
+access_qa_test_run_line_admin,qa.test.run.line admin,model_qa_test_run_line,group_qa_admin,1,1,1,1
+access_qa_retest_wizard_user,qa.retest.wizard user,model_qa_retest_wizard,group_qa_user,1,1,1,1
+access_qa_retest_wizard_admin,qa.retest.wizard admin,model_qa_retest_wizard,group_qa_admin,1,1,1,1
