@@ -12,6 +12,7 @@ class TestQaTestManagement(TransactionCase):
 
     @classmethod
     def setUpClass(cls):
+        """Three users (two testers and a lead), an area, three cases, a task."""
         super().setUpClass()
         cls.tester = new_test_user(
             cls.env,
@@ -70,6 +71,7 @@ class TestQaTestManagement(TransactionCase):
 
     # qa.functional.area
     def test_area_two_levels_only(self):
+        """A sub-area cannot get its own sub-area; the name shows the path."""
         child = self.env["qa.functional.area"].create(
             {"name": "Child", "parent_id": self.area.id}
         )
@@ -82,12 +84,14 @@ class TestQaTestManagement(TransactionCase):
     # qa.tag
     @mute_logger("odoo.sql_db")
     def test_tag_name_unique(self):
+        """Two tags with the same name are refused by the database."""
         self.env["qa.tag"].create({"name": "smoke-test"})
         with self.assertRaises(IntegrityError):
             self.env["qa.tag"].create({"name": "smoke-test"})
 
     # qa.requirement
     def test_requirement_coverage(self):
+        """Coverage counter and Not Covered filter follow the linked cases."""
         requirement = self.env["qa.requirement"].create(
             {"name": "Requirement", "area_id": self.area.id}
         )
@@ -100,6 +104,7 @@ class TestQaTestManagement(TransactionCase):
 
     # qa.test.case
     def test_case_run_stats(self):
+        """The case counts its executions and remembers the latest result."""
         self._finished_run(["pass", "pass", "pass"])
         self._finished_run(["fail", "pass", "pass"])
         case = self.cases[0]
@@ -108,17 +113,20 @@ class TestQaTestManagement(TransactionCase):
 
     # qa.test.run: state machine
     def test_run_cannot_start_without_lines(self):
+        """Start is refused for a run without test cases."""
         run = self._create_run(cases=self.env["qa.test.case"])
         with self.assertRaisesRegex(UserError, "Add at least one test case"):
             run.action_start()
 
     def test_run_cannot_jump_from_draft_to_done(self):
+        """Done is refused for a draft run: no jump over In Progress."""
         run = self._create_run()
         with self.assertRaisesRegex(UserError, "Only a running run can be finished"):
             run.action_done()
         self.assertEqual(run.state, "draft")
 
     def test_run_done_needs_all_results(self):
+        """Done is refused while a line has no result (the invariant)."""
         run = self._create_run()
         run.action_start()
         run.line_ids[0].result = "pass"
@@ -126,6 +134,7 @@ class TestQaTestManagement(TransactionCase):
             run.action_done()
 
     def test_run_counts_and_verdict(self):
+        """Counters, pass rate, verdict and estimate of a finished run."""
         run = self._finished_run(["pass", "fail", "pass"])
         self.assertEqual(run.state, "done")
         self.assertTrue(run.date_end)
@@ -136,12 +145,14 @@ class TestQaTestManagement(TransactionCase):
 
     # qa.test.run.line
     def test_line_fail_needs_comment(self):
+        """A line cannot fail without a comment."""
         run = self._create_run()
         run.action_start()
         with self.assertRaisesRegex(ValidationError, "Explain why case"):
             run.line_ids[0].action_set_fail()
 
     def test_line_locked_after_done(self):
+        """Lines of a finished run cannot be changed or deleted."""
         run = self._finished_run(["pass", "pass", "pass"])
         with self.assertRaisesRegex(UserError, "cannot be changed"):
             run.line_ids[0].write({"result": "fail"})
@@ -150,6 +161,7 @@ class TestQaTestManagement(TransactionCase):
 
     # qa.retest.wizard
     def test_retest_wizard_takes_failed_cases_only(self):
+        """The wizard creates a draft run with the failed cases only."""
         run = self._finished_run(["fail", "pass", "fail"])
         wizard = (
             self.env["qa.retest.wizard"]
@@ -165,6 +177,7 @@ class TestQaTestManagement(TransactionCase):
 
     # project.task and res.users extensions
     def test_task_and_user_counters(self):
+        """Task and user extensions count runs and show the verdict."""
         self._finished_run(["pass", "pass", "pass"])
         self._create_run()
         self.assertEqual(self.task.qa_run_count, 2)
@@ -173,6 +186,7 @@ class TestQaTestManagement(TransactionCase):
 
     # security
     def test_tester_sees_fewer_runs_than_lead(self):
+        """Record rule: a tester sees own runs only, the lead sees all."""
         own_run = self._create_run(tester=self.tester)
         other_run = self._create_run(tester=self.other_tester)
         runs_as_tester = self.env["qa.test.run"].with_user(self.tester).search([])
@@ -185,6 +199,7 @@ class TestQaTestManagement(TransactionCase):
             other_run.with_user(self.tester).read(["name"])
 
     def test_tester_cannot_edit_reference_data(self):
+        """ACL: tags are kept by the lead; a tester cannot create them."""
         with self.assertRaises(AccessError):
             self.env["qa.tag"].with_user(self.tester).create({"name": "new tag"})
         self.env["qa.tag"].with_user(self.lead).create({"name": "new tag"})

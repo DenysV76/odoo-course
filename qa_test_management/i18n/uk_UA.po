@@ -1,0 +1,1064 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* qa_test_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-12 18:33+0000\n"
+"PO-Revision-Date: 2026-11-12 18:33+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: qa_test_management
+#: model:ir.actions.report,print_report_name:qa_test_management.qa_test_run_report_action
+msgid "'Test Run - %s' % object.name"
+msgstr "'Прогін тестів - %s' % object.name"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid ""
+"<br/>\n"
+"                                <strong>Finished:</strong>"
+msgstr ""
+"<br/>\n"
+"                                <strong>Завершено:</strong>"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid ""
+"<br/>\n"
+"                                <strong>Project:</strong>"
+msgstr ""
+"<br/>\n"
+"                                <strong>Проєкт:</strong>"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid ""
+"<br/>\n"
+"                                <strong>Started:</strong>"
+msgstr ""
+"<br/>\n"
+"                                <strong>Розпочато:</strong>"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid ""
+"<br/>\n"
+"                                <strong>Tester:</strong>"
+msgstr ""
+"<br/>\n"
+"                                <strong>Тестувальник:</strong>"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "<strong>Comments:</strong>"
+msgstr "<strong>Коментарі:</strong>"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "<strong>State:</strong>"
+msgstr "<strong>Стан:</strong>"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "<strong>Task:</strong>"
+msgstr "<strong>Завдання:</strong>"
+
+#. module: qa_test_management
+#: model:ir.model.constraint,message:qa_test_management.constraint_qa_tag_name_unique
+msgid "A tag with this name already exists."
+msgstr "Тег із такою назвою вже існує."
+
+#. module: qa_test_management
+#: model:ir.model.constraint,message:qa_test_management.constraint_qa_test_run_line_case_unique_per_run
+msgid "A test case can appear only once in a run."
+msgstr "Тест-кейс може бути в прогоні лише один раз."
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_requirement_view_form
+msgid "Acceptance criterion..."
+msgstr "Критерій приймання..."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__message_needaction
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__message_needaction
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__message_needaction
+msgid "Action Needed"
+msgstr "Потрібна дія"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__active
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__active
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__active
+msgid "Active"
+msgstr "Активний"
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/models/qa_test_run.py:0
+msgid "Add at least one test case before starting the run."
+msgstr "Додайте хоча б один тест-кейс, перш ніж запускати прогін."
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_functional_area_view_form
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_requirement_view_form
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_requirement_view_search
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_form
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_search
+msgid "Archived"
+msgstr "Архівовано"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_functional_area_view_list
+msgid "Area"
+msgstr "Область"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_res_users__qa_run_ids
+msgid "Assigned Test Runs"
+msgstr "Призначені прогони"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__message_attachment_count
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__message_attachment_count
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__message_attachment_count
+msgid "Attachment Count"
+msgstr "Кількість вкладень"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__author_id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__author_id
+msgid "Author"
+msgstr "Автор"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_case__automation_status__automated
+msgid "Automated"
+msgstr "Автоматизовано"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_search
+msgid "Automation"
+msgstr "Автоматизація"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_case__automation_status__candidate
+msgid "Automation Candidate"
+msgstr "Кандидат на автоматизацію"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__automation_status
+msgid "Automation Status"
+msgstr "Статус автоматизації"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Cancel"
+msgstr "Скасувати"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_run__state__cancel
+msgid "Cancelled"
+msgstr "Скасовано"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__case_count
+msgid "Case Count"
+msgstr "Кількість кейсів"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__line_count
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "Cases"
+msgstr "Кейси"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_retest_wizard__case_ids
+msgid "Cases to Retest"
+msgstr "Кейси для ретесту"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_tag__color
+msgid "Color"
+msgstr "Колір"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__comment
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "Comment"
+msgstr "Коментар"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__note
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Comments"
+msgstr "Коментарі"
+
+#. module: qa_test_management
+#: model:ir.ui.menu,name:qa_test_management.qa_test_management_menu_configuration
+msgid "Configuration"
+msgstr "Налаштування"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_retest_wizard_view_form
+msgid "Create Retest Run"
+msgstr "Створити прогін ретесту"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__create_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__create_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_retest_wizard__create_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_tag__create_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__create_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__create_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__create_uid
+msgid "Created by"
+msgstr "Створив"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__create_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__create_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_retest_wizard__create_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_tag__create_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__create_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__create_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__create_date
+msgid "Created on"
+msgstr "Створено"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_requirement__priority__3
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_case__priority__3
+msgid "Critical"
+msgstr "Критичний"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__description
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__description
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_tag__description
+msgid "Description"
+msgstr "Опис"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_retest_wizard_view_form
+msgid "Discard"
+msgstr "Відмінити"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_project_task__display_name
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__display_name
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__display_name
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_retest_wizard__display_name
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_tag__display_name
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__display_name
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__display_name
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__display_name
+#: model:ir.model.fields,field_description:qa_test_management.field_res_users__display_name
+msgid "Display Name"
+msgstr "Назва для відображення"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_run__state__done
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Done"
+msgstr "Завершено"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_run__state__draft
+msgid "Draft"
+msgstr "Чернетка"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_res_users__qa_open_run_count
+msgid "Draft and in-progress runs where the user is the tester."
+msgstr ""
+"Прогони в стані «Чернетка» і «Виконується», де користувач — тестувальник."
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Environment, build, anything that matters for this run..."
+msgstr "Середовище, збірка, усе, що важливо для цього прогону..."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__estimate_minutes
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__estimate_minutes
+msgid "Estimate (min)"
+msgstr "Оцінка (хв)"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__executed_by_id
+msgid "Executed By"
+msgstr "Виконав"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__executed_on
+msgid "Executed On"
+msgstr "Виконано"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__run_count
+msgid "Executions"
+msgstr "Виконань"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__expected_result
+msgid "Expected Result"
+msgstr "Очікуваний результат"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_case__estimate_minutes
+msgid "Expected time to execute the case once, in minutes."
+msgstr "Очікуваний час одного виконання кейса, у хвилинах."
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/models/qa_test_run_line.py:0
+msgid "Explain why case %(case)s failed in the comment."
+msgstr "Поясніть у коментарі, чому кейс %(case)s не пройшов."
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__project_task__qa_verdict__fail
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_case__last_result__fail
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_run__verdict__fail
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_run_line__result__fail
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_form
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Fail"
+msgstr "Fail"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_run__verdict
+msgid "Fail as soon as one line failed; Pass only when every line passed."
+msgstr ""
+"Fail, щойно хоч один рядок не пройшов; Pass — лише коли пройшли всі рядки."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__fail_count
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_search
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_search
+msgid "Failed"
+msgstr "Не пройшли"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_retest_wizard__case_ids
+msgid "Failed cases of the original run. Remove the ones you skip."
+msgstr ""
+"Кейси, що не пройшли в початковому прогоні. Приберіть ті, які пропускаєте."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__date_end
+msgid "Finished"
+msgstr "Завершено"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__message_follower_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__message_follower_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__message_follower_ids
+msgid "Followers"
+msgstr "Підписники"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__message_partner_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__message_partner_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Підписники (партнери)"
+
+#. module: qa_test_management
+#: model:ir.model,name:qa_test_management.model_qa_functional_area
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__area_id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__area_id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__area_id
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_requirement_view_search
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_search
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_search
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "Functional Area"
+msgstr "Функціональна область"
+
+#. module: qa_test_management
+#: model:ir.actions.act_window,name:qa_test_management.qa_functional_area_action
+#: model:ir.ui.menu,name:qa_test_management.qa_functional_area_menu
+msgid "Functional Areas"
+msgstr "Функціональні області"
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/models/qa_functional_area.py:0
+msgid "Functional areas can be nested two levels deep only."
+msgstr "Функціональні області можуть мати лише два рівні вкладеності."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__has_message
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__has_message
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__has_message
+msgid "Has Message"
+msgstr "Є повідомлення"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_requirement__priority__2
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_case__priority__2
+msgid "High"
+msgstr "Високий"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_search
+msgid "High and Critical"
+msgstr "Високий і критичний"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_case__run_count
+msgid "How many times the case got a result in a run."
+msgstr "Скільки разів кейс отримав результат у прогоні."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_project_task__id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_retest_wizard__id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_tag__id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__id
+#: model:ir.model.fields,field_description:qa_test_management.field_res_users__id
+msgid "ID"
+msgstr "ID"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_requirement__message_needaction
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_case__message_needaction
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_run__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Якщо позначено, нові повідомлення потребують вашої уваги."
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_requirement__message_has_error
+#: model:ir.model.fields,help:qa_test_management.field_qa_requirement__message_has_sms_error
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_case__message_has_error
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_case__message_has_sms_error
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_run__message_has_error
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_run__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Якщо позначено, деякі повідомлення мають помилку доставки."
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_run__state__in_progress
+msgid "In Progress"
+msgstr "Виконується"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__message_is_follower
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__message_is_follower
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__message_is_follower
+msgid "Is Follower"
+msgstr "Підписник"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__last_run_date
+msgid "Last Executed"
+msgstr "Востаннє виконано"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__last_result
+msgid "Last Result"
+msgstr "Останній результат"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__write_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__write_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_retest_wizard__write_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_tag__write_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__write_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__write_uid
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__write_uid
+msgid "Last Updated by"
+msgstr "Востаннє оновив"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__write_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__write_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_retest_wizard__write_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_tag__write_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__write_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__write_date
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__write_date
+msgid "Last Updated on"
+msgstr "Востаннє оновлено"
+
+#. module: qa_test_management
+#: model:ir.ui.menu,name:qa_test_management.qa_test_management_menu_library
+msgid "Library"
+msgstr "Бібліотека"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__line_ids
+msgid "Lines"
+msgstr "Рядки"
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/models/qa_test_run_line.py:0
+msgid "Lines of a done or cancelled run cannot be changed."
+msgstr "Рядки завершеного або скасованого прогону змінювати не можна."
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_requirement__priority__0
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_case__priority__0
+msgid "Low"
+msgstr "Низький"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_case__automation_status__manual
+msgid "Manual"
+msgstr "Ручний"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_requirement__priority__1
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_case__priority__1
+msgid "Medium"
+msgstr "Середній"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__message_has_error
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__message_has_error
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__message_has_error
+msgid "Message Delivery error"
+msgstr "Помилка доставки повідомлення"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__message_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__message_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__message_ids
+msgid "Messages"
+msgstr "Повідомлення"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_search
+msgid "My Runs"
+msgstr "Мої прогони"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__name
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_tag__name
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__name
+msgid "Name"
+msgstr "Назва"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_case__automation_status__never
+msgid "Not Automatable"
+msgstr "Не автоматизується"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_requirement_view_form
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_requirement_view_search
+msgid "Not Covered"
+msgstr "Не покрито"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__todo_count
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_search
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "Not Executed"
+msgstr "Не виконано"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__message_needaction_counter
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__message_needaction_counter
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Кількість дій"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__message_has_error_counter
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__message_has_error_counter
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__message_has_error_counter
+msgid "Number of errors"
+msgstr "Кількість помилок"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_requirement__message_needaction_counter
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_case__message_needaction_counter
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_run__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Кількість повідомлень, що потребують дії"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_requirement__message_has_error_counter
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_case__message_has_error_counter
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_run__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Кількість повідомлень із помилкою доставки"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_requirement__description
+msgid "One requirement - one acceptance criterion."
+msgstr "Одна вимога — один критерій приймання."
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/models/qa_test_run.py:0
+msgid "Only a cancelled run can be reset to draft."
+msgstr "Повернути в чернетку можна лише скасований прогін."
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/models/qa_test_run.py:0
+msgid "Only a draft or running run can be cancelled."
+msgstr "Скасувати можна лише прогін у чернетці або той, що виконується."
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/models/qa_test_run.py:0
+msgid "Only a draft run can be started."
+msgstr "Запустити можна лише прогін у чернетці."
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/wizard/qa_retest_wizard.py:0
+msgid "Only a finished run can be retested."
+msgstr "Ретест можливий лише для завершеного прогону."
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/models/qa_test_run.py:0
+msgid "Only a running run can be finished."
+msgstr "Завершити можна лише прогін, що виконується."
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_search
+msgid "Open"
+msgstr "Відкриті"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_res_users__qa_open_run_count
+#: model_terms:ir.ui.view,arch_db:qa_test_management.res_users_view_form_inherit_qa
+msgid "Open Test Runs"
+msgstr "Відкриті прогони"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_retest_wizard__run_id
+msgid "Original Run"
+msgstr "Початковий прогін"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__parent_id
+msgid "Parent Area"
+msgstr "Батьківська область"
+
+#. module: qa_test_management
+#: model:ir.model.fields.selection,name:qa_test_management.selection__project_task__qa_verdict__pass
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_case__last_result__pass
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_run__verdict__pass
+#: model:ir.model.fields.selection,name:qa_test_management.selection__qa_test_run_line__result__pass
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_form
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Pass"
+msgstr "Pass"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "Pass Rate"
+msgstr "Частка Pass"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__pass_rate
+msgid "Pass Rate (%)"
+msgstr "Частка Pass (%)"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__pass_count
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_search
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "Passed"
+msgstr "Пройшли"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__preconditions
+msgid "Preconditions"
+msgstr "Передумови"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__priority
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__priority
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__priority
+msgid "Priority"
+msgstr "Пріоритет"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__project_id
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_search
+msgid "Project"
+msgstr "Проєкт"
+
+#. module: qa_test_management
+#: model:ir.ui.menu,name:qa_test_management.qa_test_management_menu_root
+#: model_terms:ir.ui.view,arch_db:qa_test_management.project_task_view_form_inherit_qa
+msgid "QA"
+msgstr "QA"
+
+#. module: qa_test_management
+#: model:res.groups,name:qa_test_management.group_qa_admin
+msgid "QA Lead"
+msgstr "Головний тестувальник"
+
+#. module: qa_test_management
+#: model:ir.model,name:qa_test_management.model_qa_tag
+msgid "QA Tag"
+msgstr "Тег QA"
+
+#. module: qa_test_management
+#: model:res.groups.privilege,name:qa_test_management.res_groups_privilege_qa
+msgid "QA Test Management"
+msgstr "Управління тестуванням"
+
+#. module: qa_test_management
+#: model:ir.module.category,name:qa_test_management.module_category_qa
+msgid "Quality Assurance"
+msgstr "Забезпечення якості"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__rating_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__rating_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__rating_ids
+msgid "Ratings"
+msgstr "Оцінки"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_run_line__comment
+msgid "Reason for Fail, or what was special about a Pass."
+msgstr "Причина Fail або що було особливого при Pass."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__name
+msgid "Reference"
+msgstr "Номер"
+
+#. module: qa_test_management
+#: model:ir.model,name:qa_test_management.model_qa_requirement
+msgid "Requirement"
+msgstr "Вимога"
+
+#. module: qa_test_management
+#: model:ir.actions.act_window,name:qa_test_management.qa_requirement_action
+#: model:ir.model.fields,field_description:qa_test_management.field_project_task__qa_requirement_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__requirement_ids
+#: model:ir.ui.menu,name:qa_test_management.qa_requirement_menu
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_form
+msgid "Requirements"
+msgstr "Вимоги"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Reset to Draft"
+msgstr "Повернути в чернетку"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__result
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_search
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "Result"
+msgstr "Результат"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Results"
+msgstr "Результати"
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/models/qa_test_run_line.py:0
+msgid "Results can be set only in a run that is in progress."
+msgstr "Результати можна проставляти лише в прогоні, що виконується."
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Retest Failed"
+msgstr "Ретест провалених"
+
+#. module: qa_test_management
+#: model:ir.actions.act_window,name:qa_test_management.qa_retest_wizard_action
+#: model:ir.model,name:qa_test_management.model_qa_retest_wizard
+msgid "Retest Failed Cases"
+msgstr "Ретест провалених кейсів"
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/wizard/qa_retest_wizard.py:0
+msgid "Retest of %(run)s."
+msgstr "Ретест прогону %(run)s."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__run_id
+msgid "Run"
+msgstr "Прогін"
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/models/qa_test_run.py:0
+msgid "Run %(run)s cannot be done: every line needs a result."
+msgstr ""
+"Прогін %(run)s не можна завершити: кожен рядок має отримати результат."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__run_line_ids
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_form
+msgid "Run History"
+msgstr "Історія прогонів"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__state
+msgid "Run State"
+msgstr "Стан прогону"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__message_has_sms_error
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__message_has_sms_error
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Помилка доставки SMS"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_form
+msgid "Scenario"
+msgstr "Сценарій"
+
+#. module: qa_test_management
+#. odoo-python
+#: code:addons/qa_test_management/wizard/qa_retest_wizard.py:0
+msgid "Select at least one case to retest."
+msgstr "Виберіть хоча б один кейс для ретесту."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__sequence
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__sequence
+msgid "Sequence"
+msgstr "Послідовність"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__task_id
+msgid "Source Task"
+msgstr "Задача-джерело"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Start"
+msgstr "Почати"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__date_start
+msgid "Started"
+msgstr "Розпочато"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__state
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_search
+msgid "State"
+msgstr "Стан"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__steps
+msgid "Steps"
+msgstr "Кроки"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_functional_area__child_ids
+msgid "Sub-areas"
+msgstr "Підобласті"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_run__estimate_minutes
+msgid "Sum of the estimates of the test cases in the run."
+msgstr "Сума оцінок тест-кейсів прогону."
+
+#. module: qa_test_management
+#: model:ir.actions.act_window,name:qa_test_management.qa_tag_action
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__tag_ids
+#: model:ir.ui.menu,name:qa_test_management.qa_tag_menu
+msgid "Tags"
+msgstr "Теги"
+
+#. module: qa_test_management
+#: model:ir.model,name:qa_test_management.model_project_task
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_retest_wizard__task_id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__task_id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__task_id
+msgid "Task"
+msgstr "Завдання"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_requirement__task_id
+msgid "Task (specification) where the requirement first appeared."
+msgstr "Задача (ТЗ), у якій вимога з'явилась уперше."
+
+#. module: qa_test_management
+#: model:ir.model,name:qa_test_management.model_qa_test_case
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__case_id
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_search
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "Test Case"
+msgstr "Тест-кейс"
+
+#. module: qa_test_management
+#: model:ir.actions.act_window,name:qa_test_management.qa_test_case_action
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__case_ids
+#: model:ir.ui.menu,name:qa_test_management.qa_test_case_menu
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_requirement_view_form
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_form
+msgid "Test Cases"
+msgstr "Тест-кейси"
+
+#. module: qa_test_management
+#: model:ir.actions.act_window,name:qa_test_management.qa_test_run_line_action
+#: model:ir.ui.menu,name:qa_test_management.qa_test_run_line_menu
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_graph
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_pivot
+msgid "Test Results"
+msgstr "Результати тестів"
+
+#. module: qa_test_management
+#: model:ir.model,name:qa_test_management.model_qa_test_run
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "Test Run"
+msgstr "Прогін тестів"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_project_task__qa_run_count
+msgid "Test Run Count"
+msgstr "Кількість прогонів"
+
+#. module: qa_test_management
+#: model:ir.model,name:qa_test_management.model_qa_test_run_line
+msgid "Test Run Line"
+msgstr "Рядок прогону"
+
+#. module: qa_test_management
+#: model:ir.actions.report,name:qa_test_management.qa_test_run_report_action
+msgid "Test Run Report"
+msgstr "Звіт прогону"
+
+#. module: qa_test_management
+#: model:ir.actions.act_window,name:qa_test_management.qa_test_run_action
+#: model:ir.model.fields,field_description:qa_test_management.field_project_task__qa_run_ids
+#: model:ir.ui.menu,name:qa_test_management.qa_test_run_menu
+#: model_terms:ir.ui.view,arch_db:qa_test_management.project_task_view_form_inherit_qa
+msgid "Test Runs"
+msgstr "Прогони"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_project_task__qa_verdict
+msgid "Test Verdict"
+msgstr "Вердикт тестування"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_retest_wizard__tester_id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__tester_id
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run_line__tester_id
+#: model:res.groups,name:qa_test_management.group_qa_user
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_search
+msgid "Tester"
+msgstr "Тестувальник"
+
+#. module: qa_test_management
+#: model:ir.ui.menu,name:qa_test_management.qa_test_management_menu_testing
+msgid "Testing"
+msgstr "Тестування"
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__name
+msgid "Title"
+msgstr "Формулювання"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_list
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_list
+msgid "Total"
+msgstr "Разом"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"            #tags Set tags on the task\n"
+"            @user Assign the task to a user\n"
+"            ! Set the task a medium priority\n"
+"            !! Set the task a high priority\n"
+"            !!! Set the task a urgent priority\n"
+"\n"
+"            Make sure to use the right format and order e.g. Improve the configuration screen #feature #v16 @Mitchell !"
+msgstr ""
+
+#. module: qa_test_management
+#: model:ir.model,name:qa_test_management.model_res_users
+msgid "User"
+msgstr "Користувач"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_retest_wizard__task_id
+msgid "Usually the same task, or the bug task where the fix was made."
+msgstr "Зазвичай та сама задача або задача бага, де зроблено виправлення."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__verdict
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_report_template
+msgid "Verdict"
+msgstr "Вердикт"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_project_task__qa_verdict
+msgid "Verdict of the latest finished test run of the task."
+msgstr "Вердикт останнього завершеного прогону задачі."
+
+#. module: qa_test_management
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_requirement__website_message_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_case__website_message_ids
+#: model:ir.model.fields,field_description:qa_test_management.field_qa_test_run__website_message_ids
+msgid "Website Messages"
+msgstr "Повідомлення з сайту"
+
+#. module: qa_test_management
+#: model:ir.model.fields,help:qa_test_management.field_qa_requirement__website_message_ids
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_case__website_message_ids
+#: model:ir.model.fields,help:qa_test_management.field_qa_test_run__website_message_ids
+msgid "Website communication history"
+msgstr "Історія спілкування на сайті"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_functional_area_view_form
+msgid "What this area covers..."
+msgstr "Що охоплює ця область..."
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_line_view_form
+msgid "Why it failed, or what was special about a pass..."
+msgstr "Чому не пройшов або що було особливого при проходженні..."
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_search
+msgid "Without Requirements"
+msgstr "Без вимог"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_case_view_form
+msgid "e.g. Archived customer is hidden in search"
+msgstr "напр. Архівний клієнт не показується в пошуку"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_requirement_view_form
+msgid "e.g. Archived customers are not offered in sale orders"
+msgstr "напр. Архівних клієнтів не пропонують у замовленнях"
+
+#. module: qa_test_management
+#: model_terms:ir.ui.view,arch_db:qa_test_management.qa_test_run_view_kanban
+msgid "passed"
+msgstr "пройшли"

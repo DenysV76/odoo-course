@@ -1,6 +1,13 @@
 {
     "name": "QA Test Management",
     "summary": "Test cases, requirements and test runs linked to project tasks",
+    "description": """
+QA Test Management
+==================
+Test cases and requirements linked many-to-many, test runs for project tasks
+with Pass / Fail lines moved Draft -> In Progress -> Done by buttons, a retest
+wizard, a PDF run report and Tester / QA Lead access groups.
+""",
     "author": "Denys Vialov",
     "website": "https://github.com/DenysV76/odoo-course",
     "category": "Services/Project",
@@ -32,6 +39,8 @@
         "demo/qa_library_demo.xml",
         "demo/qa_test_run_demo.xml",
     ],
+    "images": ["static/description/banner.png"],
     "installable": True,
     "application": True,
+    "auto_install": False,
 }
