@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="qa_retest_wizard_view_form" model="ir.ui.view">
+        <field name="name">qa.retest.wizard.form</field>
+        <field name="model">qa.retest.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="run_id"/>
+                    <field name="task_id"/>
+                    <field name="tester_id" widget="many2one_avatar_user"/>
+                </group>
+                <field name="case_ids">
+                    <list>
+                        <field name="name"/>
+                        <field name="area_id"/>
+                        <field name="priority" widget="priority"/>
+                    </list>
+                </field>
+                <footer>
+                    <button name="action_create_run" type="object" string="Create Retest Run" class="btn-primary"/>
+                    <button string="Discard" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="qa_retest_wizard_action" model="ir.actions.act_window">
+        <field name="name">Retest Failed Cases</field>
+        <field name="res_model">qa.retest.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_qa_test_run"/>
+        <field name="binding_view_types">form</field>
+    </record>
+</odoo>

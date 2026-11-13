@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="qa_test_case_view_list" model="ir.ui.view">
+        <field name="name">qa.test.case.list</field>
+        <field name="model">qa.test.case</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="priority" widget="priority" optional="show"/>
+                <field name="name"/>
+                <field name="area_id"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="estimate_minutes" sum="Total" optional="show"/>
+                <field name="last_result" widget="badge" decoration-success="last_result == 'pass'" decoration-danger="last_result == 'fail'" optional="show"/>
+                <field name="automation_status" optional="hide"/>
+                <field name="author_id" widget="many2one_avatar_user" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="qa_test_case_view_form" model="ir.ui.view">
+        <field name="name">qa.test.case.form</field>
+        <field name="model">qa.test.case</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Archived customer is hidden in search"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="area_id"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="priority" widget="priority"/>
+                        </group>
+                        <group>
+                            <field name="estimate_minutes"/>
+                            <field name="automation_status"/>
+                            <field name="author_id" widget="many2one_avatar_user"/>
+                            <field name="last_result" widget="badge" decoration-success="last_result == 'pass'" decoration-danger="last_result == 'fail'" invisible="not last_result"/>
+                            <field name="last_run_date" invisible="not last_run_date"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Scenario" name="scenario">
+                            <group>
+                                <field name="preconditions"/>
+                                <field name="steps"/>
+                                <field name="expected_result"/>
+                            </group>
+                        </page>
+                        <page string="Run History" name="history">
+                            <field name="run_line_ids" readonly="1">
+                                <list decoration-success="result == 'pass'" decoration-danger="result == 'fail'">
+                                    <field name="run_id"/>
+                                    <field name="task_id"/>
+                                    <field name="result"/>
+                                    <field name="comment"/>
+                                    <field name="executed_on"/>
+                                    <field name="executed_by_id" widget="many2one_avatar_user"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Requirements" name="requirements">
+                            <field name="requirement_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="priority" widget="priority"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="qa_test_case_view_search" model="ir.ui.view">
+        <field name="name">qa.test.case.search</field>
+        <field name="model">qa.test.case</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="area_id"/>
+                <field name="tag_ids"/>
+                <filter name="filter_high" string="High and Critical" domain="[('priority', 'in', ('2', '3'))]"/>
+                <filter name="filter_no_requirement" string="Without Requirements" domain="[('requirement_ids', '=', False)]"/>
+                <separator/>
+                <filter name="filter_archived" string="Archived" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter name="group_area" string="Functional Area" context="{'group_by': 'area_id'}"/>
+                    <filter name="group_automation" string="Automation" context="{'group_by': 'automation_status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="qa_test_case_action" model="ir.actions.act_window">
+        <field name="name">Test Cases</field>
+        <field name="res_model">qa.test.case</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="qa_test_case_menu"
+              action="qa_test_case_action"
+              parent="qa_test_management_menu_library"
+              sequence="20"/>
+</odoo>

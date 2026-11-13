@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="area_sales" model="qa.functional.area">
+        <field name="name">Sales</field>
+        <field name="sequence">10</field>
+        <field name="description">Quotations, orders and pricing.</field>
+    </record>
+    <record id="area_sales_quotation" model="qa.functional.area">
+        <field name="name">Quotations</field>
+        <field name="parent_id" ref="area_sales"/>
+        <field name="description">Creating, sending and confirming quotations.</field>
+    </record>
+    <record id="area_inventory" model="qa.functional.area">
+        <field name="name">Inventory</field>
+        <field name="sequence">20</field>
+        <field name="description">Receipts, deliveries and stock moves.</field>
+    </record>
+    <record id="area_access" model="qa.functional.area">
+        <field name="name">Access Rights</field>
+        <field name="sequence">30</field>
+        <field name="description">Who can see and change what.</field>
+    </record>
+
+    <record id="tag_smoke" model="qa.tag">
+        <field name="name">smoke</field>
+        <field name="color">10</field>
+        <field name="description">Quick check after every deployment.</field>
+    </record>
+    <record id="tag_regression" model="qa.tag">
+        <field name="name">regression</field>
+        <field name="color">4</field>
+        <field name="description">Full regression suite.</field>
+    </record>
+    <record id="tag_access" model="qa.tag">
+        <field name="name">access</field>
+        <field name="color">1</field>
+        <field name="description">Checks of access rights and record rules.</field>
+    </record>
+    <record id="tag_archive" model="qa.tag">
+        <field name="name">archived records</field>
+        <field name="color">3</field>
+        <field name="description">Behaviour of archived records.</field>
+    </record>
+</odoo>

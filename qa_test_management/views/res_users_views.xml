@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_users_view_form_inherit_qa" model="ir.ui.view">
+        <field name="name">res.users.form.inherit.qa</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button name="action_open_qa_runs" type="object" class="oe_stat_button" icon="fa-check-square-o" groups="qa_test_management.group_qa_user">
+                    <field name="qa_open_run_count" widget="statinfo" string="Open Test Runs"/>
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

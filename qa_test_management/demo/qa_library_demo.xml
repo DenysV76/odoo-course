@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="case_quotation_create" model="qa.test.case">
+        <field name="name">Salesperson creates a quotation</field>
+        <field name="priority">3</field>
+        <field name="area_id" ref="area_sales_quotation"/>
+        <field name="tag_ids" eval="[Command.set([ref('tag_smoke'), ref('tag_regression')])]"/>
+        <field name="preconditions">A customer and a product exist.</field>
+        <field name="steps">1. Open Sales and click New.
+2. Select the customer and add the product.
+3. Save.</field>
+        <field name="expected_result">The quotation is saved in state Quotation with a reference number.</field>
+        <field name="estimate_minutes">5</field>
+        <field name="automation_status">automated</field>
+    </record>
+    <record id="case_quotation_confirm" model="qa.test.case">
+        <field name="name">Confirmed quotation becomes a sales order</field>
+        <field name="priority">3</field>
+        <field name="area_id" ref="area_sales_quotation"/>
+        <field name="tag_ids" eval="[Command.set([ref('tag_smoke')])]"/>
+        <field name="preconditions">A quotation in state Quotation.</field>
+        <field name="steps">1. Open the quotation.
+2. Click Confirm.</field>
+        <field name="expected_result">The state changes to Sales Order and a delivery is created.</field>
+        <field name="estimate_minutes">4</field>
+        <field name="automation_status">candidate</field>
+    </record>
+    <record id="case_archived_customer" model="qa.test.case">
+        <field name="name">Archived customer is not offered in a new quotation</field>
+        <field name="priority">2</field>
+        <field name="area_id" ref="area_sales"/>
+        <field name="tag_ids" eval="[Command.set([ref('tag_archive'), ref('tag_regression')])]"/>
+        <field name="preconditions">An archived customer exists.</field>
+        <field name="steps">1. Create a new quotation.
+2. Type the name of the archived customer in the Customer field.</field>
+        <field name="expected_result">The archived customer is not in the dropdown.</field>
+        <field name="estimate_minutes">3</field>
+    </record>
+    <record id="case_delivery_validate" model="qa.test.case">
+        <field name="name">Validating a delivery reduces stock</field>
+        <field name="priority">2</field>
+        <field name="area_id" ref="area_inventory"/>
+        <field name="tag_ids" eval="[Command.set([ref('tag_regression')])]"/>
+        <field name="preconditions">A confirmed sales order with a stored product on hand.</field>
+        <field name="steps">1. Open the delivery of the order.
+2. Click Validate.</field>
+        <field name="expected_result">The delivery is Done and the on-hand quantity drops by the ordered quantity.</field>
+        <field name="estimate_minutes">8</field>
+    </record>
+    <record id="case_receipt_partial" model="qa.test.case">
+        <field name="name">Partial receipt creates a backorder</field>
+        <field name="priority">1</field>
+        <field name="area_id" ref="area_inventory"/>
+        <field name="preconditions">A purchase receipt for 10 units.</field>
+        <field name="steps">1. Set received quantity to 6.
+2. Validate and choose Create Backorder.</field>
+        <field name="expected_result">A backorder for 4 units is created.</field>
+        <field name="estimate_minutes">6</field>
+        <field name="automation_status">never</field>
+    </record>
+    <record id="case_access_salesman" model="qa.test.case">
+        <field name="name">Salesperson sees only own quotations</field>
+        <field name="priority">2</field>
+        <field name="area_id" ref="area_access"/>
+        <field name="tag_ids" eval="[Command.set([ref('tag_access')])]"/>
+        <field name="preconditions">Two salespersons, each with a quotation.</field>
+        <field name="steps">1. Log in as the first salesperson.
+2. Open Sales.</field>
+        <field name="expected_result">Only the quotations of the first salesperson are listed.</field>
+        <field name="estimate_minutes">7</field>
+    </record>
+
+    <record id="requirement_quotation" model="qa.requirement">
+        <field name="name">Quotation can be created and confirmed</field>
+        <field name="priority">3</field>
+        <field name="area_id" ref="area_sales_quotation"/>
+        <field name="task_id" ref="project.project_1_task_1"/>
+        <field name="description">A salesperson creates a quotation and confirms it into a sales order.</field>
+        <field name="case_ids" eval="[Command.set([ref('case_quotation_create'), ref('case_quotation_confirm')])]"/>
+    </record>
+    <record id="requirement_archived" model="qa.requirement">
+        <field name="name">Archived customers are hidden in new documents</field>
+        <field name="priority">2</field>
+        <field name="area_id" ref="area_sales"/>
+        <field name="task_id" ref="project.project_1_task_2"/>
+        <field name="case_ids" eval="[Command.set([ref('case_archived_customer')])]"/>
+    </record>
+    <record id="requirement_stock" model="qa.requirement">
+        <field name="name">Stock follows deliveries and receipts</field>
+        <field name="priority">2</field>
+        <field name="area_id" ref="area_inventory"/>
+        <field name="task_id" ref="project.project_1_task_3"/>
+        <field name="case_ids" eval="[Command.set([ref('case_delivery_validate'), ref('case_receipt_partial')])]"/>
+    </record>
+    <record id="requirement_discount_limit" model="qa.requirement">
+        <field name="name">Discount above 20% needs manager approval</field>
+        <field name="priority">1</field>
+        <field name="area_id" ref="area_sales"/>
+        <field name="task_id" ref="project.project_1_task_4"/>
+        <field name="description">Not covered yet: shows up under the Not Covered filter.</field>
+    </record>
+</odoo>

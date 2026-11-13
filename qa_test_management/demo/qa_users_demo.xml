@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="user_qa_tester" model="res.users">
+        <field name="name">Anna Tester</field>
+        <field name="login">qa_tester</field>
+        <field name="password">qa_tester</field>
+        <field name="tz">Europe/Kyiv</field>
+        <field name="group_ids" eval="[Command.set([ref('group_qa_user'), ref('project.group_project_user')])]"/>
+    </record>
+
+    <record id="user_qa_tester_2" model="res.users">
+        <field name="name">Mark Tester</field>
+        <field name="login">qa_tester2</field>
+        <field name="password">qa_tester2</field>
+        <field name="tz">Europe/Kyiv</field>
+        <field name="group_ids" eval="[Command.set([ref('group_qa_user'), ref('project.group_project_user')])]"/>
+    </record>
+
+    <record id="user_qa_lead" model="res.users">
+        <field name="name">Lena Lead</field>
+        <field name="login">qa_lead</field>
+        <field name="password">qa_lead</field>
+        <field name="tz">Europe/Kyiv</field>
+        <field name="group_ids" eval="[Command.set([ref('group_qa_admin'), ref('project.group_project_user')])]"/>
+    </record>
+</odoo>

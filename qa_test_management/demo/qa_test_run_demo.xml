@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Runs are created in Draft and moved through the same buttons a user
+         clicks, so the demo passes every check of the state machine. -->
+    <record id="run_draft" model="qa.test.run">
+        <field name="task_id" ref="project.project_1_task_4"/>
+        <field name="tester_id" ref="user_qa_tester"/>
+        <field name="note">Planned for the next build.</field>
+    </record>
+    <record id="run_in_progress" model="qa.test.run">
+        <field name="task_id" ref="project.project_1_task_2"/>
+        <field name="tester_id" ref="user_qa_tester"/>
+    </record>
+    <record id="run_done_pass" model="qa.test.run">
+        <field name="task_id" ref="project.project_1_task_1"/>
+        <field name="tester_id" ref="user_qa_tester"/>
+        <field name="note">Build from the staging branch.</field>
+    </record>
+    <record id="run_done_fail" model="qa.test.run">
+        <field name="task_id" ref="project.project_1_task_3"/>
+        <field name="tester_id" ref="user_qa_tester_2"/>
+    </record>
+    <record id="run_cancelled" model="qa.test.run">
+        <field name="task_id" ref="project.project_1_task_1"/>
+        <field name="tester_id" ref="user_qa_lead"/>
+        <field name="note">Cancelled: the task was sent back to development.</field>
+    </record>
+
+    <record id="line_draft_1" model="qa.test.run.line">
+        <field name="run_id" ref="run_draft"/>
+        <field name="case_id" ref="case_quotation_create"/>
+    </record>
+    <record id="line_draft_2" model="qa.test.run.line">
+        <field name="run_id" ref="run_draft"/>
+        <field name="case_id" ref="case_access_salesman"/>
+    </record>
+    <record id="line_progress_1" model="qa.test.run.line">
+        <field name="run_id" ref="run_in_progress"/>
+        <field name="case_id" ref="case_archived_customer"/>
+    </record>
+    <record id="line_progress_2" model="qa.test.run.line">
+        <field name="run_id" ref="run_in_progress"/>
+        <field name="case_id" ref="case_quotation_create"/>
+    </record>
+    <record id="line_pass_1" model="qa.test.run.line">
+        <field name="run_id" ref="run_done_pass"/>
+        <field name="case_id" ref="case_quotation_create"/>
+    </record>
+    <record id="line_pass_2" model="qa.test.run.line">
+        <field name="run_id" ref="run_done_pass"/>
+        <field name="case_id" ref="case_quotation_confirm"/>
+    </record>
+    <record id="line_pass_3" model="qa.test.run.line">
+        <field name="run_id" ref="run_done_pass"/>
+        <field name="case_id" ref="case_access_salesman"/>
+    </record>
+    <record id="line_fail_1" model="qa.test.run.line">
+        <field name="run_id" ref="run_done_fail"/>
+        <field name="case_id" ref="case_delivery_validate"/>
+    </record>
+    <record id="line_fail_2" model="qa.test.run.line">
+        <field name="run_id" ref="run_done_fail"/>
+        <field name="case_id" ref="case_receipt_partial"/>
+    </record>
+    <record id="line_fail_3" model="qa.test.run.line">
+        <field name="run_id" ref="run_done_fail"/>
+        <field name="case_id" ref="case_quotation_confirm"/>
+    </record>
+    <record id="line_cancelled_1" model="qa.test.run.line">
+        <field name="run_id" ref="run_cancelled"/>
+        <field name="case_id" ref="case_quotation_confirm"/>
+    </record>
+
+    <function model="qa.test.run" name="action_start"
+              eval="[[ref('run_in_progress'), ref('run_done_pass'), ref('run_done_fail')]]"/>
+
+    <record id="line_progress_1" model="qa.test.run.line">
+        <field name="result">pass</field>
+    </record>
+    <record id="line_pass_1" model="qa.test.run.line">
+        <field name="result">pass</field>
+    </record>
+    <record id="line_pass_2" model="qa.test.run.line">
+        <field name="result">pass</field>
+        <field name="comment">Passed after reloading the page once.</field>
+    </record>
+    <record id="line_pass_3" model="qa.test.run.line">
+        <field name="result">pass</field>
+    </record>
+    <record id="line_fail_1" model="qa.test.run.line">
+        <field name="result">pass</field>
+    </record>
+    <record id="line_fail_2" model="qa.test.run.line">
+        <field name="comment">No backorder is proposed; the remaining 4 units are lost.</field>
+        <field name="result">fail</field>
+    </record>
+    <record id="line_fail_3" model="qa.test.run.line">
+        <field name="comment">Confirm button raises an error for a customer without an email.</field>
+        <field name="result">fail</field>
+    </record>
+
+    <function model="qa.test.run" name="action_done"
+              eval="[[ref('run_done_pass'), ref('run_done_fail')]]"/>
+    <function model="qa.test.run" name="action_cancel"
+              eval="[[ref('run_cancelled')]]"/>
+</odoo>

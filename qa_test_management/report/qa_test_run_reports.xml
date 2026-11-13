@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="qa_test_run_report_action" model="ir.actions.report">
+        <field name="name">Test Run Report</field>
+        <field name="model">qa.test.run</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">qa_test_management.qa_test_run_report_template</field>
+        <field name="report_file">qa_test_management.qa_test_run_report_template</field>
+        <field name="print_report_name">'Test Run - %s' % object.name</field>
+        <field name="binding_model_id" ref="model_qa_test_run"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

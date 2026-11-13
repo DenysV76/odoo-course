@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="qa_test_run_line_view_list" model="ir.ui.view">
+        <field name="name">qa.test.run.line.list</field>
+        <field name="model">qa.test.run.line</field>
+        <field name="arch" type="xml">
+            <list create="false" decoration-success="result == 'pass'" decoration-danger="result == 'fail'">
+                <field name="run_id"/>
+                <field name="task_id" optional="show"/>
+                <field name="case_id"/>
+                <field name="area_id" optional="show"/>
+                <field name="result"/>
+                <field name="comment" optional="show"/>
+                <field name="executed_on" optional="show"/>
+                <field name="tester_id" widget="many2one_avatar_user" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="qa_test_run_line_view_form" model="ir.ui.view">
+        <field name="name">qa.test.run.line.form</field>
+        <field name="model">qa.test.run.line</field>
+        <field name="arch" type="xml">
+            <form create="false">
+                <header>
+                    <button name="action_set_pass" type="object" string="Pass" class="btn-success" invisible="state != 'in_progress' or result == 'pass'"/>
+                    <button name="action_set_fail" type="object" string="Fail" class="btn-danger" invisible="state != 'in_progress' or result == 'fail'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="case_id" readonly="state != 'draft'"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="run_id" readonly="1"/>
+                            <field name="task_id"/>
+                            <field name="area_id"/>
+                        </group>
+                        <group>
+                            <field name="result" readonly="state != 'in_progress'"/>
+                            <field name="executed_on"/>
+                            <field name="executed_by_id" widget="many2one_avatar_user"/>
+                        </group>
+                    </group>
+                    <field name="comment" readonly="state in ('done', 'cancel')" placeholder="Why it failed, or what was special about a pass..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="qa_test_run_line_view_pivot" model="ir.ui.view">
+        <field name="name">qa.test.run.line.pivot</field>
+        <field name="model">qa.test.run.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Test Results">
+                <field name="area_id" type="row"/>
+                <field name="result" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="qa_test_run_line_view_graph" model="ir.ui.view">
+        <field name="name">qa.test.run.line.graph</field>
+        <field name="model">qa.test.run.line</field>
+        <field name="arch" type="xml">
+            <graph string="Test Results" type="bar" stacked="1">
+                <field name="area_id"/>
+                <field name="result"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="qa_test_run_line_view_search" model="ir.ui.view">
+        <field name="name">qa.test.run.line.search</field>
+        <field name="model">qa.test.run.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="case_id"/>
+                <field name="run_id"/>
+                <field name="task_id"/>
+                <field name="area_id"/>
+                <filter name="filter_pass" string="Passed" domain="[('result', '=', 'pass')]"/>
+                <filter name="filter_fail" string="Failed" domain="[('result', '=', 'fail')]"/>
+                <filter name="filter_todo" string="Not Executed" domain="[('result', '=', False)]"/>
+                <group>
+                    <filter name="group_area" string="Functional Area" context="{'group_by': 'area_id'}"/>
+                    <filter name="group_case" string="Test Case" context="{'group_by': 'case_id'}"/>
+                    <filter name="group_result" string="Result" context="{'group_by': 'result'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="qa_test_run_line_action" model="ir.actions.act_window">
+        <field name="name">Test Results</field>
+        <field name="res_model">qa.test.run.line</field>
+        <field name="view_mode">list,pivot,graph,form</field>
+    </record>
+
+    <menuitem id="qa_test_run_line_menu"
+              action="qa_test_run_line_action"
+              parent="qa_test_management_menu_testing"
+              sequence="20"/>
+</odoo>
