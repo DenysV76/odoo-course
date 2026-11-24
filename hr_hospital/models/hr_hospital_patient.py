@@ -26,9 +26,13 @@ class HrHospitalPatient(models.Model):
         inverse_name="patient_id",
         string="Personal Doctor History",
     )
-    policy_number = fields.Char(
+    policy_number = fields.Integer(
         string="Insurance Policy Number",
-        size=20,
+    )
+    policy_note = fields.Char(
+        string="Policy Note",
+        help="Policy number as it was before policies became numeric, kept "
+        "when it had letters or did not fit into a number.",
     )
     phone = fields.Char()
     user_id = fields.Many2one(
