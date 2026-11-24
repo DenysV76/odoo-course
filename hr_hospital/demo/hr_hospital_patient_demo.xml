@@ -1,4 +1,4 @@
-<odoo>
+<odoo noupdate="1">
 
     <record id="hr_hospital_patient_1" model="hr.hospital.patient">
         <field name="name">Шевченко Тарас</field>
