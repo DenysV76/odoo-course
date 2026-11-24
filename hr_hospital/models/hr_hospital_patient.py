@@ -26,7 +26,7 @@ class HrHospitalPatient(models.Model):
         inverse_name="patient_id",
         string="Personal Doctor History",
     )
-    insurance_number = fields.Char(
+    policy_number = fields.Char(
         string="Insurance Policy Number",
         size=20,
     )

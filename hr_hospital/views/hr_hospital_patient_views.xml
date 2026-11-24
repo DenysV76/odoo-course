@@ -9,7 +9,7 @@
                 <field name="personal_doctor_id"/>
                 <field name="age"/>
                 <field name="blood_type" optional="show"/>
-                <field name="insurance_number" optional="hide"/>
+                <field name="policy_number" optional="hide"/>
                 <field name="description" optional="hide"/>
             </list>
         </field>
@@ -47,7 +47,7 @@
                             <field name="name"/>
                             <field name="phone" widget="phone"/>
                             <field name="personal_doctor_id"/>
-                            <field name="insurance_number"/>
+                            <field name="policy_number"/>
                             <field name="user_id"/>
                             <field name="description"/>
                         </group>

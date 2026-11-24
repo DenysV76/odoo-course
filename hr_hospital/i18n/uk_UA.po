@@ -443,7 +443,7 @@ msgid "Infectious Diseases"
 msgstr "Інфекційні хвороби"
 
 #. module: hr_hospital
-#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_patient__insurance_number
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_patient__policy_number
 msgid "Insurance Policy Number"
 msgstr "Номер страхового поліса"
 
