@@ -49,6 +49,7 @@
                             <field name="personal_doctor_id"/>
                             <field name="policy_number" options="{'format': false}"/>
                             <field name="policy_note"/>
+                            <field name="first_visit_date"/>
                             <field name="user_id"/>
                             <field name="description"/>
                         </group>

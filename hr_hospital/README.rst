@@ -43,6 +43,15 @@ Demo data contain one user per group (login ``hospital_patient``,
 ``hospital_intern``, ``hospital_doctor``, ``hospital_manager``,
 ``hospital_admin``; the password equals the login).
 
+Upgrade
+-------
+
+Version 19.0.1.3.0 comes with upgrade scripts from 19.0.1.0.0 (folder
+``migrations``): the policy field is renamed, becomes a number, and patients
+get the date of their first visit. Update an installed module with
+``-u hr_hospital``; the steps, the deliberate failures and the commands to
+repeat them are in ``doc/UPGRADE_REPORT.md``.
+
 Tests
 -----
 

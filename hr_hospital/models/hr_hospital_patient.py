@@ -34,6 +34,9 @@ class HrHospitalPatient(models.Model):
         help="Policy number as it was before policies became numeric, kept "
         "when it had letters or did not fit into a number.",
     )
+    first_visit_date = fields.Date(
+        help="Date of the earliest visit that took place.",
+    )
     phone = fields.Char()
     user_id = fields.Many2one(
         comodel_name="res.users",

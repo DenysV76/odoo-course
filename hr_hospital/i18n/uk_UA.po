@@ -926,3 +926,27 @@ msgstr "Візити з цією хворобою"
 #: code:addons/hr_hospital/models/hospital_doctor_history.py:0
 msgid "Warning"
 msgstr "Увага"
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_patient__first_visit_date
+msgid "First Visit Date"
+msgstr "Дата першого візиту"
+
+#. module: hr_hospital
+#: model:ir.model.fields,help:hr_hospital.field_hr_hospital_patient__first_visit_date
+msgid "Date of the earliest visit that took place."
+msgstr "Дата найранішого візиту, що відбувся."
+
+#. module: hr_hospital
+#: model:ir.model.fields,field_description:hr_hospital.field_hr_hospital_patient__policy_note
+msgid "Policy Note"
+msgstr "Примітка до поліса"
+
+#. module: hr_hospital
+#: model:ir.model.fields,help:hr_hospital.field_hr_hospital_patient__policy_note
+msgid ""
+"Policy number as it was before policies became numeric, kept when it had "
+"letters or did not fit into a number."
+msgstr ""
+"Номер поліса в тому вигляді, як він був до переходу на числові поліси; "
+"зберігається, якщо містив літери або не вміщався в число."
